@@ -1,3 +1,4 @@
+// This file implements several checks on input elements
 var fname = document.getElementById('fname');
 var email = document.getElementById('email');
 var phone = document.getElementById('phone');
@@ -8,6 +9,7 @@ var phoneVal = false;
 var emailVal = false;
 var pincodeVal = false;
 
+// If name, email, phone and pincode are in desirable range then this function will enable the submit button otherwise disable it
 function submitButton() {
     if(nameVal & phoneVal & pincodeVal & emailVal) {
         document.getElementById('submitButton').disabled = false;
@@ -16,6 +18,7 @@ function submitButton() {
     }
 }
 
+// Applies a simple length check on name input
 function validateName(e) {
     if(fname.value.length < 3) {
         document.getElementById('fname').style.borderColor = 'red';
@@ -27,6 +30,7 @@ function validateName(e) {
     submitButton();
 }
 
+// Applies a simple length check on phone input
 function validatePhone(e) {
     if(phone.value.length < 10) {
         document.getElementById('phone').style.borderColor = 'red';
@@ -38,6 +42,7 @@ function validatePhone(e) {
     submitButton();
 }
 
+// Applies a simple length check on pincode input
 function validatePincode(e) {
     if(pincode.value.length < 6) {
         document.getElementById('pincode').style.borderColor = 'red';
@@ -49,6 +54,7 @@ function validatePincode(e) {
     submitButton();
 }
 
+// Applies a set of checks including length and existence of '@' and '.' on email input
 function validateEmail(e) {
     if(email.value.length > 5 & email.value.indexOf('@') >= 0 & email.value.indexOf('.') >= 0) {
         document.getElementById('email').style.borderColor = 'green';
@@ -60,6 +66,7 @@ function validateEmail(e) {
     submitButton();
 }
 
+// Adding event listeners on all the input elements
 fname.addEventListener("keyup", validateName);
 phone.addEventListener("keyup", validatePhone);
 email.addEventListener("keyup", validateEmail);
