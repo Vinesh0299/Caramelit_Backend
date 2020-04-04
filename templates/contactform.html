@@ -4,7 +4,7 @@
 	<title>Contact Form</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> 
 	<link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='cr.jpg') }}">
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -130,7 +130,7 @@
                         </div>
                         <div class="form-group">
                         	<label>Zipcode/Pincode:</label>
-                        	<input type="text" class="form-control bg bg-light" name="pincode">
+                        	<input type="text" class="form-control bg bg-light" id="pincode" name="pincode">
                         </div>
                     
 					</div>
@@ -192,11 +192,12 @@
                                 <option>Tableau</option>
                             </select>
                         </div> -->
-				</div>
-				 <div class="form-group" >
-                            <button value="submit" class="csub" onClick="raghu()" name="submit">SUBMIT</button>
-                        </div>
+						</div>
+						<div class="form-group" >
+									<button value="submit" class="csub" id="submitButton" onClick="raghu()" name="submit">SUBMIT</button>
+						</div>
 					</form>
+					<script src="{{ url_for('static', filename='js/validinput.js') }}"></script>
 					</div>
 			</div>
 			<div class="col-lg-1">
@@ -236,42 +237,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

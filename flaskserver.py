@@ -14,15 +14,7 @@ def contact_us():
 def data():
     msg = Message(subject="TEst", sender=app.config.get("MAIL_USERNAME"), recipients=["Madarauchiha3524@gmail.com"], body="This is a test mail for" + request.form['name'])
     mail.send(msg)
-    return jsonify(data=[
-        request.form['name'],
-        request.form['email'],
-        request.form['phone'],
-        request.form['pincode'],
-        request.form['budget'],
-        request.form['service'],
-        request.form['country']
-    ])
+    return render_template('contactform.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
