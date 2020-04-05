@@ -25,7 +25,7 @@ def data():
     msg = Message(
         subject="Ticket #" + str(ticket),
         sender=app.config.get("MAIL_USERNAME"),
-        recipients=["Madarauchiha3524@gmail.com", "Krishnamurthy.pradhan@gmail.com"],
+        recipients=["Madarauchiha3524@gmail.com", "krishnamurthy.pradhan@gmail.com", "krishnamurthy.p@caramelt.com", "madarauchiha3525@gmail.com"],
         body="Name: " + str(request.form['name']) + "\n Email: " + str(request.form['email']) + "\n Phone: " + str(request.form['phone']) + "\n pincode: " + str(request.form['pincode']) + "\n Budget: " + str(request.form['budget']) + "\n Service: " + str(request.form['service']) + "\n Country: " + str(request.form['country']) + "\n"
     )
     mail.send(msg)
