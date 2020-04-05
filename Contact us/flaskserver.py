@@ -13,12 +13,12 @@ app.config.from_pyfile('configmail.cfg')
 # Initialize the Mail class
 mail = Mail(app)
 
-@app.route('/')
+@app.route('/contactform')
 # returns the contact us page
 def contact_us():
     return render_template('contactform.html')
 
-@app.route('/data', methods=['POST'])
+@app.route('/sendcontactform', methods=['POST'])
 # Sends the mail and redirects to contact us page
 def data():
     global ticket
@@ -30,7 +30,7 @@ def data():
     )
     mail.send(msg)
     ticket += 1
-    return redirect('/')
+    return redirect('/contactform')
 
 # Run the app
 if __name__ == '__main__':
