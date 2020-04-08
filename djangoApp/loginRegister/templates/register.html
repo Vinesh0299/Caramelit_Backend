@@ -71,7 +71,7 @@
       <form autocomplete="off" action="#" th:action="@{/user/register}"
         th:object="${user}" method="post" class="m-t" role="form"
         data-toggle="validator">
-
+          {% csrf_token %}
 		
         <!--<div th:if="${confirmationMessage}" class="alert alert-success"
           role="alert" th:text=${confirmationMessage}></div>
