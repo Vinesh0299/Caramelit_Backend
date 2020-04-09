@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
+# Student user
 class studentUser(models.Model):
     student_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=100)
@@ -52,6 +52,15 @@ class organisation(models.Model):
     email = models.EmailField(max_length=100)
     phone = models.BigIntegerField()
     description = models.TextField()
+    profileImg = models.CharField(max_length=100, default='photo.jpg')
+    date_of_reg = models.DateTimeField(default=timezone.now)
+    password = models.CharField(max_length=100)
+
+class adminUser(models.Model):
+    admin_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    phone = models.BigIntegerField()
     profileImg = models.CharField(max_length=100, default='photo.jpg')
     date_of_reg = models.DateTimeField(default=timezone.now)
     password = models.CharField(max_length=100)
