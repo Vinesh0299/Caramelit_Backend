@@ -72,7 +72,7 @@
         th:object="${college}" method="post" class="m-t" role="form"
         data-toggle="validator">
 
-		
+        {% csrf_token %}
         <!--<div th:if="${confirmationMessage}" class="alert alert-success"
           role="alert" th:text=${confirmationMessage}></div>
 
@@ -120,7 +120,7 @@
             <span class="glyphicon glyphicon-user stugl"></span>
           </span>
           
-          <input type="text" th:field="*{collegeName}" 
+          <input name='collegename' type="text" th:field="*{collegeName}" 
             placeholder="College Name...." class="form-control stureg" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
@@ -130,7 +130,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-education stugl"></span>
           </span>
-          <input type="text" th:field="*{universityName}"
+          <input name='universityname' type="text" th:field="*{universityName}"
             placeholder="University Name...." class="form-control stureg" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
@@ -141,7 +141,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-envelope stugl"></span>
           </span>
-          <input type="email" th:field="*{email}" 
+          <input name='email' type="email" th:field="*{email}" 
             placeholder="Email Address...." class="form-control stureg"
             data-error="This email address is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -151,7 +151,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-earphone stugl"></span>
           </span>
-          <input type="number" th:field="*{mobile}"
+          <input name='phone' type="number" th:field="*{mobile}"
             placeholder="Your Mobile Number...." class="form-control stureg"
             data-error="This Mobile Number is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -163,7 +163,7 @@
       		<span class="input-group-addon">
             <span class="glyphicon glyphicon-flag stugl"></span>
           </span>
-      		<select class="form-control stureg" th:field="*{country}" required>
+      		<select name='country' class="form-control stureg" th:field="*{country}" required>
        			<option value="" >- - - Select Your Country - - -</option>
         		<option value="Australia">Australia</option>
         		<option value="India">India</option>
@@ -179,7 +179,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-home stugl"></span>
           </span>
-          <input type="text" th:field="*{state}"
+          <input name='state' type="text" th:field="*{state}"
              class="form-control stureg" placeholder="Enter Your State..."
             data-error="State is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -191,7 +191,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-tasks stugl"></span>
           </span>
-          <input type="text" th:field="*{skill}"
+          <input name='skill' type="text" th:field="*{skill}"
              class="form-control stureg" placeholder="Skill Set if you have any... EX: C, C++,java"
             data-error="Skill Set is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -202,7 +202,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-edit stugl"></span>
           </span>
-          <textarea type="text" th:field="*{others}"
+          <textarea name='description' type="text" th:field="*{others}"
              class="form-control stureg" placeholder="Others..."
             data-error="College is invalid" required /></textarea>
           <span class="glyphicon form-control-feedback"

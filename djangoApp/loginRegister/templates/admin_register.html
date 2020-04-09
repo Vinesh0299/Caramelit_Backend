@@ -72,7 +72,7 @@
         th:object="${admin}" method="post" class="m-t" role="form"
         data-toggle="validator">
 
-		
+        {% csrf_token %}
         <!--<div th:if="${confirmationMessage}" class="alert alert-success"
           role="alert" th:text=${confirmationMessage}></div>
 
@@ -103,7 +103,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-user stugl"></span>
           </span>
-          <input type="text" th:field="*{name}" 
+          <input name='name' type="text" th:field="*{name}" 
             placeholder="Enter Your Name...." class="form-control stureg"
             data-error="This email address is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -114,7 +114,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-envelope stugl"></span>
           </span>
-          <input type="email" th:field="*{email}" 
+          <input name='email' type="email" th:field="*{email}" 
             placeholder="Email Address...." class="form-control stureg"
             data-error="This email address is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -125,7 +125,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-earphone stugl"></span>
           </span>
-          <input type="number" th:field="*{mobile}"
+          <input name='email' type="number" th:field="*{mobile}"
             placeholder="Your Mobile Number...." class="form-control stureg"
             data-error="This Mobile Number is invalid" required />
           <span class="glyphicon form-control-feedback"

@@ -71,7 +71,7 @@
       <form autocomplete="off" action="#" th:action="@{/instructor/instructor_register}"
         th:object="${instructor}" method="post" class="m-t" role="form"
         data-toggle="validator">
-
+        {% csrf_token %}
 		
         <!--<div th:if="${confirmationMessage}" class="alert alert-success"
           role="alert" th:text=${confirmationMessage}></div>
@@ -123,7 +123,7 @@
             <span class="glyphicon glyphicon-user stugl"></span>
           </span>
           
-          <input type="text" th:field="*{firstName}" 
+          <input name='fname' type="text" th:field="*{firstName}" 
             placeholder="First Name...." class="form-control stureg" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
@@ -135,7 +135,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-user stugl"></span>
           </span>
-          <input type="text" th:field="*{lastName}"
+          <input name='lname' type="text" th:field="*{lastName}"
             placeholder="Last Name...." class="form-control stureg" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
@@ -148,7 +148,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-envelope stugl"></span>
           </span>
-          <input type="email" th:field="*{email}" 
+          <input name='email' type="email" th:field="*{email}" 
             placeholder="Email Address...." class="form-control stureg"
             data-error="This email address is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -159,7 +159,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-earphone stugl"></span>
           </span>
-          <input type="number" th:field="*{mobile}"
+          <input name='phone' type="number" th:field="*{mobile}"
             placeholder="Your Mobile Number...." class="form-control stureg"
             data-error="This Mobile Number is invalid" required />
           <span class="glyphicon form-control-feedback"
@@ -174,7 +174,7 @@
             <span class="glyphicon glyphicon-pencil stugl"></span>
           </span>
           
-          <input type="text" th:field="*{subject}" 
+          <input name='subject' type="text" th:field="*{subject}" 
             placeholder="Enter your subjects" class="form-control stureg" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
@@ -189,7 +189,7 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-time stugl"></span>
           </span>
-          <select class="form-control stureg" th:field="*{time}" required>
+          <select name='jobtype' class="form-control stureg" th:field="*{time}" required>
           	<option value=""> - - - Select By - - - </option>
           	<option value="fulltime">FullTime</option>
           	<option value="parttime">PartTime</option>
@@ -205,7 +205,7 @@
             <span class="glyphicon glyphicon-briefcase stugl"></span>
           </span>
           
-          <input type="text" th:field="*{experience}" 
+          <input name='experience' type="text" th:field="*{experience}" 
             placeholder="Enter your Experience" class="form-control stureg" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
@@ -219,7 +219,7 @@
             <span class="glyphicon glyphicon-list-alt stugl"></span>
           </span>
           
-          <textarea th:field="*{profile}" 
+          <textarea name='description' th:field="*{profile}" 
             placeholder="Enter your Profile Details" class="form-control stureg" required >
             </textarea>
           <span class="glyphicon form-control-feedback"

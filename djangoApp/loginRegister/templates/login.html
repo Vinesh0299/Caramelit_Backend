@@ -31,7 +31,7 @@
             <form class="form-signin" th:action="@{/user/login}" th:object="${user}" method="post">
             
               <div class="form-label-group">
-                <input th:field="*{email}" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input name="email" th:field="*{email}" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputEmail">Email address</label>
               </div>
 
