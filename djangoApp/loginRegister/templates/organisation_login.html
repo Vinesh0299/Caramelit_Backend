@@ -29,6 +29,7 @@
     			<span style="color:red;" th:text="${message}"></span> <br/><br/>
 				</center>
             <form class="form-signin" th:action="@{/organisation/organisation_login}" th:object="${organisation}" method="post">
+              {% csrf_token %}
               <div class="form-label-group">
                 <input name="email" th:field="*{email}" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputEmail">Email address</label>

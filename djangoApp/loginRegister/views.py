@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import studentUser, adminUser, instructor, college, organisation
+import hashlib
+
+salt = b'vB\\xa6\\xc4M(\\x07\\xbd\\xcc\\x00\\xf5*\\x93\\xb9\\xdb{\\xa4)\\xa4\\xff\\xe3_Z\\x87<\\xc4\\xcc\\x93\\xe5\\xa3\\x8f\\xdb'
 
 # Main page
 def index(request):
@@ -6,6 +10,19 @@ def index(request):
 
 # User related pages
 def user_login(request):
+    if request.method == 'POST':
+        global salt
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+        try:
+            student = studentUser.objects.get(email=email)
+            if student.password == str(key):
+                return redirect('/user/successLogin')
+            else:
+                return redirect('/user/login')
+        except Exception as e:
+            return redirect('/user/login')
     return render(request, 'login.html')
 
 def user_register(request):
@@ -16,6 +33,19 @@ def user_forgot_password(request):
 
 # Instructor related pages
 def instructor_login(request):
+    if request.method == 'POST':
+        global salt
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+        try:
+            instructor = instructor.objects.get(email=email)
+            if instructor.password == str(key):
+                return redirect('/instructor/instructor_successLogin')
+            else:
+                return redirect('/instructor/instructor_login')
+        except Exception as e:
+            return redirect('/instructor/instructor_login')
     return render(request, 'instructor_login.html')
 
 def instructor_register(request):
@@ -26,6 +56,19 @@ def instructor_forgot_password(request):
 
 # College related pages
 def college_login(request):
+    if request.method == 'POST':
+        global salt
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+        try:
+            college = college.objects.get(email=email)
+            if college.password == str(key):
+                return redirect('/college/college_successLogin')
+            else:
+                return redirect('/college/college_login')
+        except Exception as e:
+            return redirect('/college/college_login')
     return render(request, 'college_login.html')
 
 def college_register(request):
@@ -36,6 +79,19 @@ def college_forgot_password(request):
 
 # Organisation related pages
 def organisation_login(request):
+    if request.method == 'POST':
+        global salt
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+        try:
+            organisation = organisation.objects.get(email=email)
+            if organisation.password == str(key):
+                return redirect('/organisation/organisation_successLogin')
+            else:
+                return redirect('/organisation/organisation_login')
+        except Exception as e:
+            return redirect('/organisation/organisation_login')
     return render(request, 'organisation_login.html')
 
 def organisation_register(request):
@@ -46,6 +102,19 @@ def organisation_forgot_password(request):
 
 # Admin related pages
 def admin_login(request):
+    if request.method == 'POST':
+        global salt
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+        try:
+            admin = adminUser.objects.get(email=email)
+            if admin.password == str(key):
+                return redirect('/admin/admin_successLogin')
+            else:
+                return redirect('/admin/admin_login')
+        except Exception as e:
+            return redirect('/admin/admin_login')
     return render(request, 'admin_login.html')
 
 def admin_register(request):
