@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import studentUser, adminUser, instructor, college, organisation
 import hashlib
+from django.http import HttpResponse
 
 salt = b'vB\\xa6\\xc4M(\\x07\\xbd\\xcc\\x00\\xf5*\\x93\\xb9\\xdb{\\xa4)\\xa4\\xff\\xe3_Z\\x87<\\xc4\\xcc\\x93\\xe5\\xa3\\x8f\\xdb'
 
@@ -10,6 +11,8 @@ def index(request):
 
 # User related pages
 def user_login(request):
+    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'student':
+        return redirect('/user/user_successLogin')
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -18,8 +21,10 @@ def user_login(request):
         try:
             student = studentUser.objects.get(email=email)
             if student.password == str(key):
-                state = 1
-                return redirect('/user/successLogin')
+                response = redirect('/user/user_successLogin')
+                response.set_cookie('username', email)
+                response.set_cookie('type', 'student')
+                return response
             else:
                 state = 2
                 return render(request, 'login.html', {'state': state})
@@ -34,8 +39,16 @@ def user_register(request):
 def user_forgot_password(request):
     return render(request, 'forgotPassword.html')
 
+def logout(request):
+    response = redirect('/user/user_login')
+    response.set_cookie('username', None)
+    response.set_cookie('type', None)
+    return response
+
 # Instructor related pages
 def instructor_login(request):
+    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'instructor':
+        return redirect('/instructor/instructor_successLogin')
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -44,11 +57,16 @@ def instructor_login(request):
         try:
             instructor = instructor.objects.get(email=email)
             if instructor.password == str(key):
-                return redirect('/instructor/instructor_successLogin')
+                response = redirect('/instructor/instructor_successLogin')
+                response.set_cookie('username', email)
+                response.set_cookie('type', 'instructor')
+                return response
             else:
-                return redirect('/instructor/instructor_login')
+                state = 2
+                return render(request, 'instructor_login.html', {'state': state})
         except Exception as e:
-            return redirect('/instructor/instructor_login')
+            state = 3
+            return render(request, 'instructor_login.html', {'state': state})
     return render(request, 'instructor_login.html')
 
 def instructor_register(request):
@@ -57,8 +75,16 @@ def instructor_register(request):
 def instructor_forgot_password(request):
     return render(request, 'instructor_forgotPassword.html')
 
+def instructor_logout(request):
+    response = redirect('/instructor/instructor_login')
+    response.set_cookie('username', None)
+    response.set_cookie('type', None)
+    return response
+
 # College related pages
 def college_login(request):
+    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'college':
+        return redirect('/college/college_successLogin')
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -67,11 +93,16 @@ def college_login(request):
         try:
             college = college.objects.get(email=email)
             if college.password == str(key):
-                return redirect('/college/college_successLogin')
+                response = redirect('/college/college_successLogin')
+                response.set_cookie('username', email)
+                response.set_cookie('type', 'college')
+                return response
             else:
-                return redirect('/college/college_login')
+                state = 2
+                return render(request, 'college_login.html', {'state': state})
         except Exception as e:
-            return redirect('/college/college_login')
+            state = 3
+            return render(request, 'college_login.html', {'state': state})
     return render(request, 'college_login.html')
 
 def college_register(request):
@@ -80,8 +111,16 @@ def college_register(request):
 def college_forgot_password(request):
     return render(request, 'college_forgot-password.html')
 
+def college_logout(request):
+    response = redirect('/college/college_login')
+    response.set_cookie('username', None)
+    response.set_cookie('type', None)
+    return response
+
 # Organisation related pages
 def organisation_login(request):
+    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'organisation':
+        return redirect('/organisation/organisation_successLogin')
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -90,11 +129,16 @@ def organisation_login(request):
         try:
             organisation = organisation.objects.get(email=email)
             if organisation.password == str(key):
-                return redirect('/organisation/organisation_successLogin')
+                response = redirect('/organisation/organisation_successLogin')
+                response.set_cookie('username', email)
+                response.set_cookie('type', 'organisation')
+                return response
             else:
-                return redirect('/organisation/organisation_login')
+                state = 2
+                return render(request, 'organisation_login.html', {'state': state})
         except Exception as e:
-            return redirect('/organisation/organisation_login')
+            state = 3
+            return render(request, 'organisation_login.html', {'state': state})
     return render(request, 'organisation_login.html')
 
 def organisation_register(request):
@@ -103,8 +147,16 @@ def organisation_register(request):
 def organisation_forgot_password(request):
     return render(request, 'organisation_forgotPassword.html')
 
+def organisation_logout(request):
+    response = redirect('/organisation/organisation_login')
+    response.set_cookie('username', None)
+    response.set_cookie('type', None)
+    return response
+
 # Admin related pages
 def admin_login(request):
+    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'admin':
+        return redirect('/admin/admin_successLogin')
     state = 1
     if request.method == 'POST':
         global salt
@@ -114,8 +166,10 @@ def admin_login(request):
         try:
             admin = adminUser.objects.get(email=email)
             if admin.password == str(key):
-                state = 1
-                return redirect('/admin/admin_successLogin')
+                response = redirect('/admin/admin_successLogin')
+                response.set_cookie('username', email)
+                response.set_cookie('type', 'admin')
+                return response
             else:
                 state = 2
                 return render(request, 'admin_login.html', {'state': state})
@@ -132,3 +186,9 @@ def admin_forgot_password(request):
 
 def admin_successLogin(request):
     return render(request, 'admin_successLogin.html')
+
+def admin_logout(request):
+    response = redirect('/admin/admin_login')
+    response.set_cookie('username', None)
+    response.set_cookie('type', None)
+    return response
