@@ -10,7 +10,6 @@ def index(request):
 
 # User related pages
 def user_login(request):
-    state = 1
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -20,14 +19,14 @@ def user_login(request):
             student = studentUser.objects.get(email=email)
             if student.password == str(key):
                 state = 1
-                return render(request, '/user/successLogin', {'username': email})
+                return redirect('/user/successLogin')
             else:
                 state = 2
                 return render(request, 'login.html', {'state': state})
         except Exception as e:
             state = 3
             return render(request, 'login.html', {'state': state})
-    return render(request, 'login.html', {'state': state})
+    return render(request, 'login.html')
 
 def user_register(request):
     return render(request, 'register.html')
