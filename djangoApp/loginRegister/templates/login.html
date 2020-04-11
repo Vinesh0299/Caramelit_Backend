@@ -29,6 +29,13 @@
     			<span style="color:red;" th:text="${message}"></span> <br/><br/>
 				</center>
             <form class="form-signin" th:action="@{/user/login}" th:object="${user}" method="post">
+              <center>
+                {% if state == 2 %}
+                  <p style="color: red; font-size: small;">* Wrong password! please try again</p>
+                {% elif state == 3 %}
+                  <p style="color: red; font-size: small;">* User does not exists please sign up first</p>
+                {% endif %}
+              </center>
             {% csrf_token %}
               <div class="form-label-group">
                 <input name="email" th:field="*{email}" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>

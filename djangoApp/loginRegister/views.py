@@ -10,6 +10,7 @@ def index(request):
 
 # User related pages
 def user_login(request):
+    state = 1
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -18,12 +19,15 @@ def user_login(request):
         try:
             student = studentUser.objects.get(email=email)
             if student.password == str(key):
-                return redirect('/user/successLogin')
+                state = 1
+                return render(request, '/user/successLogin', {'username': email})
             else:
-                return redirect('/user/login')
+                state = 2
+                return render(request, 'login.html', {'state': state})
         except Exception as e:
-            return redirect('/user/login')
-    return render(request, 'login.html')
+            state = 3
+            return render(request, 'login.html', {'state': state})
+    return render(request, 'login.html', {'state': state})
 
 def user_register(request):
     return render(request, 'register.html')
@@ -102,6 +106,7 @@ def organisation_forgot_password(request):
 
 # Admin related pages
 def admin_login(request):
+    state = 1
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -110,11 +115,14 @@ def admin_login(request):
         try:
             admin = adminUser.objects.get(email=email)
             if admin.password == str(key):
+                state = 1
                 return redirect('/admin/admin_successLogin')
             else:
-                return redirect('/admin/admin_login')
+                state = 2
+                return render(request, 'admin_login.html', {'state': state})
         except Exception as e:
-            return redirect('/admin/admin_login')
+            state = 3
+            return render(request, 'admin_login.html', {'state': state})
     return render(request, 'admin_login.html')
 
 def admin_register(request):
@@ -122,3 +130,6 @@ def admin_register(request):
 
 def admin_forgot_password(request):
     return render(request, 'admin_forgotpassword.html')
+
+def admin_successLogin(request):
+    return render(request, 'admin_successLogin.html')

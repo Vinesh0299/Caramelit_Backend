@@ -41,4 +41,5 @@ urlpatterns = [
     path('admin/admin_login', loginviews.admin_login, name='admin_login'),
     path('admin/admin_register', loginviews.admin_register, name='admin_register'),
     path('admin/admin_forgot-password', loginviews.admin_forgot_password, name='admin_forgot_password'),
+    path('admin/admin_successLogin', loginviews.admin_successLogin, name='admin_successLogin'),
 ]
