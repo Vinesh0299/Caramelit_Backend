@@ -39,6 +39,9 @@ def user_register(request):
 def user_forgot_password(request):
     return render(request, 'forgotPassword.html')
 
+def user_successLogin(request):
+    return render(request, 'successLogin.html')
+
 def logout(request):
     response = redirect('/user/user_login')
     response.set_cookie('username', None)
@@ -74,6 +77,9 @@ def instructor_register(request):
 
 def instructor_forgot_password(request):
     return render(request, 'instructor_forgotPassword.html')
+
+def instructor_successLogin(request):
+    return render(request, 'instructor_successLogin.html')
 
 def instructor_logout(request):
     response = redirect('/instructor/instructor_login')
@@ -111,6 +117,9 @@ def college_register(request):
 def college_forgot_password(request):
     return render(request, 'college_forgot-password.html')
 
+def college_successLogin(request):
+    return render(request, 'college_successLogin.html')
+
 def college_logout(request):
     response = redirect('/college/college_login')
     response.set_cookie('username', None)
@@ -146,6 +155,9 @@ def organisation_register(request):
 
 def organisation_forgot_password(request):
     return render(request, 'organisation_forgotPassword.html')
+
+def organisation_successLogin(request):
+    return render(request, 'organisation_successLogin.html')
 
 def organisation_logout(request):
     response = redirect('/organisation/organisation_login')

@@ -25,21 +25,25 @@ urlpatterns = [
     path('user/login', loginviews.user_login, name='user_login'),
     path('user/register', loginviews.user_register, name='user_register'),
     path('user/forgot-password', loginviews.user_forgot_password, name='user_forgot_password'),
+    path('user/successLogin', loginviews.user_successLogin, name='user_successLogin'),
     path('user/logout', loginviews.logout, name='user_logout'),
     # Instructor oriented pages
     path('instructor/instructor_login', loginviews.instructor_login, name='instructor_login'),
     path('instructor/instructor_register', loginviews.instructor_register, name='instructor_register'),
     path('instructor/instructor_forgot-password', loginviews.instructor_forgot_password, name='instructor_forgot_password'),
+    path('instructor/instructor_successLogin', loginviews.instructor_successLogin, name='instructor_successLogin'),
     path('instructor/logout', loginviews.instructor_logout, name='instructor_logout'),
     # College oriented pages
     path('college/college_login', loginviews.college_login, name='college_login'),
     path('college/college_register', loginviews.college_register, name='college_register'),
     path('college/college_forgot-password', loginviews.college_forgot_password, name='college_forgot_password'),
+    path('college/college_successLogin', loginviews.college_successLogin, name='college_successLogin'),
     path('college/logout', loginviews.college_logout, name='college_logout'),
     # Organisation oriented pages
     path('organisation/organisation_login', loginviews.organisation_login, name='organisation_login'),
     path('organisation/organisation_register', loginviews.organisation_register, name='organisation_register'),
     path('organisation/organisation_forgot-password', loginviews.organisation_forgot_password, name='organisation_forgot_password'),
+    path('organisation/organisation_successLogin', loginviews.organisation_successLogin, name='organisation_successLogin'),
     path('organisation/logout', loginviews.organisation_logout, name='organisation_logout'),
     # Admin oriented pages
     path('admin/admin_login', loginviews.admin_login, name='admin_login'),
