@@ -11,8 +11,11 @@ def index(request):
 
 # User related pages
 def user_login(request):
-    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'student':
-        return redirect('/user/user_successLogin')
+    try:
+        if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'student':
+            return redirect('/user/user_successLogin')
+    except Exception as e:
+        pass
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -50,8 +53,11 @@ def logout(request):
 
 # Instructor related pages
 def instructor_login(request):
-    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'instructor':
-        return redirect('/instructor/instructor_successLogin')
+    try:
+        if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'instructor':
+            return redirect('/instructor/instructor_successLogin')
+    except Exception as e:
+        pass
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -89,8 +95,11 @@ def instructor_logout(request):
 
 # College related pages
 def college_login(request):
-    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'college':
-        return redirect('/college/college_successLogin')
+    try:
+        if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'college':
+            return redirect('/college/college_successLogin')
+    except Exception as e:
+        pass
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -128,8 +137,11 @@ def college_logout(request):
 
 # Organisation related pages
 def organisation_login(request):
-    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'organisation':
-        return redirect('/organisation/organisation_successLogin')
+    try:
+        if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'organisation':
+            return redirect('/organisation/organisation_successLogin')
+    except Exception as e:
+        pass
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -167,8 +179,11 @@ def organisation_logout(request):
 
 # Admin related pages
 def admin_login(request):
-    if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'admin':
-        return redirect('/admin/admin_successLogin')
+    try:
+        if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'admin':
+            return redirect('/admin/admin_successLogin')
+    except Exception as e:
+        pass
     state = 1
     if request.method == 'POST':
         global salt

@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import loginRegister.views as loginviews
+import staticHome.views as staticviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Main page
-    path('', loginviews.index, name="index"),
+    path('', staticviews.index, name="index"),
     # User oriented pages
     path('user/login', loginviews.user_login, name='user_login'),
     path('user/register', loginviews.user_register, name='user_register'),
