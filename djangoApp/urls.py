@@ -58,4 +58,25 @@ urlpatterns = [
     path('admin/admin_forgot-password', loginviews.admin_forgot_password, name='admin_forgot_password'),
     path('admin/admin_successLogin', loginviews.admin_successLogin, name='admin_successLogin'),
     path('admin/logout', loginviews.admin_logout, name='admin_logout'),
+    # Industries related pages
+    path('industries/automotive', staticviews.automotive, name="automotive"),
+    path('industries/communication', staticviews.communication, name="communication"),
+    path('industries/lifescience', staticviews.lifescience, name="lifescience"),
+    path('industries/banking', staticviews.banking, name="banking"),
+    path('industries/consumer', staticviews.consumer, name="consumer"),
+    path('industries/travel', staticviews.travel, name="travel"),
+    # Insights related pages
+    path('insights/artificial', staticviews.artificial, name="artificial"),
+    path('insights/blockchain', staticviews.blockchain, name="blockchain"),
+    path('insights/iot', staticviews.iot, name="iot"),
+    path('insights/futureworkforce', staticviews.futureworkforce, name="futureworkforce"),
+    path('insights/cloudcomputing', staticviews.cloudcomputing, name="cloudcomputing"),
+    path('insights/datascience', staticviews.datascience, name="datascience"),
+    # Business related pages
+    path('business/strategy', staticviews.strategy, name="strategy"),
+    path('business/consulting', staticviews.consulting, name="consulting"),
+    path('business/digital', staticviews.digital, name="digital"),
+    path('business/technology', staticviews.technology, name="technology"),
+    path('business/operations', staticviews.operations, name="operations"),
+    path('business/Application', staticviews.Application, name="Application"),
 ]
