@@ -22,6 +22,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Main page
     path('', staticviews.index, name="index"),
+    path('aboutus', staticviews.aboutus, name="aboutus"),
+    path('consortium', staticviews.consortium, name="consortium"),
+    path('academy', staticviews.academy, name="academy"),
+    path('products', staticviews.products, name="products"),
+    # Contact forms
+    path('contact/contactform', staticviews.contactform, name="contactform"),
     # User oriented pages
     path('user/login', loginviews.user_login, name='user_login'),
     path('user/register', loginviews.user_register, name='user_register'),
