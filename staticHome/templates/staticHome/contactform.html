@@ -107,13 +107,21 @@
 			<div class="col-lg-10 contact">
 				<h1 id="cname">Caramel IT Services</h1>
 				<h1 id="coname" style="text-align: center;">Contact Us</h1>
+				<center>
+					{% if error == 0 %}
+						<p style="color: lightgreen;" >Your query was submitted successfully</p>
+					{% elif error == 1 %}
+						<p style="color: red;">It seems that there was an error</p>
+					{% endif %}
+				</center>
 				<div class="row" class="contact5">
 					<div class="col-lg-6" >
 					<div id="first2" >
 						<form name="frm" action="#"  method="post">
+							{% csrf_token %}
                         <div  class="form-group">
                             		<label for="fullname" name="fname">Full Name:</label>
-                           				 <input type="text" class="form-control bg bg-light" id="fname" name="email" required/>
+                           				 <input type="text" class="form-control bg bg-light" id="fname" name="fname" required/>
                             			 <i id="fname error"></i>
                         </div>
                         <div  class="form-group">
@@ -138,7 +146,7 @@
 				<div class="col-lg-6">
 					<div class="form-group">
                         	<label >Budget:</label>
-                        	<select class="form-control bg bg-light">
+                        	<select class="form-control bg bg-light" name="budget">
                         		<option>25000 - 50000</option>
                         		<option>50000 - 100000</option>
                         		<option>100000 - 150000</option>
@@ -150,7 +158,7 @@
                         </div>
                         <div class="form-group">
                         	<label>Service:</label>
-                        	<select  class="form-control bg bg-light">
+                        	<select  class="form-control bg bg-light" name="service">
                         		<option>Mobile App</option>
                         		<option>Wed Development</option>
                         		<option>Digital Marketing</option>
@@ -160,7 +168,7 @@
                         </div>
                         <div class="form-group">
                         	<label>Country:</label>
-                        	<select class="form-control bg bg-light">
+                        	<select class="form-control bg bg-light" name="country">
                         		<option>INDIA</option>
                         		<option>U.S.A</option>
                         		<option>UK</option>
@@ -197,6 +205,7 @@
 
                         </div>
 					</form>
+					<script src="{% static 'staticHome/javascript/validinput.js' %}"></script>
 					</div>
 			</div>
 			<div class="col-lg-1">

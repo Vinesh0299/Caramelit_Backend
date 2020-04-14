@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
+
+# Defining ticket numbers for contact forms
+service_ticket = 1
+consortium_ticket = 1
+academy_ticket = 1
 
 # Static Home pages
 def index(request):
@@ -75,10 +81,58 @@ def Application(request):
 
 # Contact forms
 def contactform(request):
+    global service_ticket
+    if request.method == 'POST':
+        try:
+            full_name = request.POST.get('fname')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            pincode = request.POST.get('pincode')
+            budget = request.POST.get('budget')
+            service = request.POST.get('service')
+            country = request.POST.get('country')
+            msg = "Name: " + full_name + '\n' + "Email: " + email + '\n' + "Phone: " + phone + '\n' + "Budget: " + budget + '\n' + "Service: " + service + '\n' + "Country: " + country + '\n'
+            send_mail('IT Services Ticket #' + str(service_ticket), msg, 'Madarauchiha3524@gmail.com', ['Vinesh.katewa@gmail.com'], fail_silently=False,)
+            service_ticket += 1
+            return render(request, 'staticHome/contactform.html', {'error': 0})
+        except Exception as e:
+            return render(request, 'staticHome/contactform.html', {'error': 1})        
     return render(request, 'staticHome/contactform.html')
 
 def academycontact(request):
+    global academy_ticket
+    if request.method == 'POST':
+        try:
+            full_name = request.POST.get('fname')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            pincode = request.POST.get('pincode')
+            subcategory = request.POST.get('subcategory')
+            category = request.POST.get('category')
+            country = request.POST.get('country')
+            msg = "Name: " + full_name + '\n' + "Email: " + email + '\n' + "Phone: " + phone + '\n' + "Subcategory: " + subcategory + '\n' + "Category: " + category + '\n' + "Country: " + country + '\n'
+            send_mail('IT Academy Ticket #' + str(academy_ticket), msg, 'Madarauchiha3524@gmail.com', ['Vinesh.katewa@gmail.com'], fail_silently=False,)
+            academy_ticket += 1
+            return render(request, 'staticHome/academycontact.html', {'error': 0})
+        except Exception as e:
+            return render(request, 'staticHome/academycontact.html', {'error': 1})
     return render(request, 'staticHome/academycontact.html')
 
 def consortiumcontact(request):
+    global consortium_ticket
+    if request.method == 'POST':
+        try:
+            full_name = request.POST.get('fname')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            pincode = request.POST.get('pincode')
+            subcategory = request.POST.get('subcategory')
+            category = request.POST.get('category')
+            country = request.POST.get('country')
+            msg = "Name: " + full_name + '\n' + "Email: " + email + '\n' + "Phone: " + phone + '\n' + "Subcategory: " + subcategory + '\n' + "Category: " + category + '\n' + "Country: " + country + '\n'
+            send_mail('IT Consortium Ticket #' + str(consortium_ticket), msg, 'Madarauchiha3524@gmail.com', ['Vinesh.katewa@gmail.com'], fail_silently=False,)
+            consortium_ticket += 1
+            return render(request, 'staticHome/consortiumcontact.html', {'error': 0})
+        except Exception as e:
+            return render(request, 'staticHome/consortiumcontact.html', {'error': 1})
     return render(request, 'staticHome/consortiumcontact.html')
