@@ -7,9 +7,6 @@ def index(request):
 def aboutus(request):
     return render(request, 'staticHome/aboutus.html')
 
-def contactform(request):
-    return render(request, 'staticHome/contactform.html')
-
 def consortium(request):
     return render(request, 'staticHome/consortium.html')
 
@@ -75,3 +72,13 @@ def operations(request):
 
 def Application(request):
     return render(request, 'staticHome/business/Application.html')
+
+# Contact forms
+def contactform(request):
+    return render(request, 'staticHome/contactform.html')
+
+def academycontact(request):
+    return render(request, 'staticHome/academycontact.html')
+
+def consortiumcontact(request):
+    return render(request, 'staticHome/consortiumcontact.html')

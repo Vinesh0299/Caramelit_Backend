@@ -28,6 +28,8 @@ urlpatterns = [
     path('products', staticviews.products, name="products"),
     # Contact forms
     path('contact/contactform', staticviews.contactform, name="contactform"),
+    path('contact/academycontact', staticviews.academycontact, name="academycontact"),
+    path('contact/consortiumcontact', staticviews.consortiumcontact, name="consortiumcontact"),
     # User oriented pages
     path('user/login', loginviews.user_login, name='user_login'),
     path('user/register', loginviews.user_register, name='user_register'),
