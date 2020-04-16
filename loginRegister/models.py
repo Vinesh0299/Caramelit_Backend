@@ -8,7 +8,7 @@ class studentUser(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
     phone = models.BigIntegerField()
-    birth_date = models.DateTimeField()
+    birth_date = models.DateField()
     country = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     college = models.CharField(max_length=100)

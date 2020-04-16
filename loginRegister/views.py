@@ -29,14 +29,33 @@ def user_login(request):
                 response.set_cookie('type', 'student')
                 return response
             else:
-                state = 2
-                return render(request, 'login.html', {'state': state})
+                return render(request, 'login.html', {'state': 2})
         except Exception as e:
-            state = 3
-            return render(request, 'login.html', {'state': state})
+            return render(request, 'login.html', {'state': 3})
     return render(request, 'login.html')
 
 def user_register(request):
+    if request.method == 'POST':
+        global salt
+        try:
+            fname = request.POST.get('fname')
+            lname = request.POST.get('lname')
+            email = request.POST.get('email')
+            phone = int(request.POST.get('phone'))
+            birthDate = request.POST.get('birthDate')
+            password = request.POST.get('password')
+            country = request.POST.get('country')
+            state = request.POST.get('state')
+            college = request.POST.get('college')
+            skills = request.POST.get('skill')
+            student = studentUser.objects.filter(email=email)
+            if len(student) > 0:
+                return render(request, 'register.html', {'state': 3})
+            student = studentUser(first_name=fname, last_name=lname, email=email, phone=phone, birth_date = birthDate, country=country, state=state, college=college, skill_set=skills, password=str(hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)))
+            student.save()
+            return render(request, 'register.html', {'state': 2})
+        except Exception as e:
+            return render(request, 'register.html', {'state': 4})
     return render(request, 'register.html')
 
 def user_forgot_password(request):
@@ -71,14 +90,13 @@ def instructor_login(request):
                 response.set_cookie('type', 'instructor')
                 return response
             else:
-                state = 2
-                return render(request, 'instructor_login.html', {'state': state})
+                return render(request, 'instructor_login.html', {'state': 2})
         except Exception as e:
-            state = 3
-            return render(request, 'instructor_login.html', {'state': state})
+            return render(request, 'instructor_login.html', {'state': 3})
     return render(request, 'instructor_login.html')
 
 def instructor_register(request):
+    global salt
     return render(request, 'instructor_register.html')
 
 def instructor_forgot_password(request):
@@ -113,14 +131,13 @@ def college_login(request):
                 response.set_cookie('type', 'college')
                 return response
             else:
-                state = 2
-                return render(request, 'college_login.html', {'state': state})
+                return render(request, 'college_login.html', {'state': 2})
         except Exception as e:
-            state = 3
-            return render(request, 'college_login.html', {'state': state})
+            return render(request, 'college_login.html', {'state': 3})
     return render(request, 'college_login.html')
 
 def college_register(request):
+    global salt
     return render(request, 'college_register.html')
 
 def college_forgot_password(request):
@@ -155,14 +172,13 @@ def organisation_login(request):
                 response.set_cookie('type', 'organisation')
                 return response
             else:
-                state = 2
-                return render(request, 'organisation_login.html', {'state': state})
+                return render(request, 'organisation_login.html', {'state': 2})
         except Exception as e:
-            state = 3
-            return render(request, 'organisation_login.html', {'state': state})
+            return render(request, 'organisation_login.html', {'state': 3})
     return render(request, 'organisation_login.html')
 
 def organisation_register(request):
+    global salt
     return render(request, 'organisation_register.html')
 
 def organisation_forgot_password(request):
@@ -184,7 +200,6 @@ def admin_login(request):
             return redirect('/admin/admin_successLogin')
     except Exception as e:
         pass
-    state = 1
     if request.method == 'POST':
         global salt
         email = request.POST.get('email')
@@ -198,14 +213,13 @@ def admin_login(request):
                 response.set_cookie('type', 'admin')
                 return response
             else:
-                state = 2
-                return render(request, 'admin_login.html', {'state': state})
+                return render(request, 'admin_login.html', {'state': 2})
         except Exception as e:
-            state = 3
-            return render(request, 'admin_login.html', {'state': state})
+            return render(request, 'admin_login.html', {'state': 3})
     return render(request, 'admin_login.html')
 
 def admin_register(request):
+    global salt
     return render(request, 'admin_register.html')
 
 def admin_forgot_password(request):

@@ -71,7 +71,15 @@
       <form autocomplete="off" action="#" th:action="@{/organisation/organisation_register}"
         th:object="${organisation}" method="post" class="m-t" role="form"
         data-toggle="validator">
-
+        <center>
+          {% if state == 3 %}
+            <p style="color: red; font-size: small;">* User already exists!!</p>
+          {% elif state == 2 %}
+            <p style="color: lightgreen; font-size: small;">Your account was created successfully</p>
+          {% elif state == 4 %}
+            <p style="color: red; font-size: small;">* There was and error! Please check all details and try again</p>
+          {% endif %}
+        </center>
           {% csrf_token %}
         <!-- <div th:if="${confirmationMessage}" class="alert alert-success"
           role="alert" th:text=${confirmationMessage}></div>
