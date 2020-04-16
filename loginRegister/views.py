@@ -51,7 +51,18 @@ def user_register(request):
             student = studentUser.objects.filter(email=email)
             if len(student) > 0:
                 return render(request, 'register.html', {'state': 3})
-            student = studentUser(first_name=fname, last_name=lname, email=email, phone=phone, birth_date = birthDate, country=country, state=state, college=college, skill_set=skills, password=str(hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)))
+            student = studentUser(
+                first_name=fname,
+                last_name=lname,
+                email=email,
+                phone=phone,
+                birth_date = birthDate,
+                country=country,
+                state=state,
+                college=college,
+                skill_set=skills,
+                password=str(hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)),
+            )
             student.save()
             return render(request, 'register.html', {'state': 2})
         except Exception as e:
@@ -83,8 +94,8 @@ def instructor_login(request):
         password = request.POST.get('password')
         key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
         try:
-            instructor = instructor.objects.get(email=email)
-            if instructor.password == str(key):
+            instructor1 = instructor.objects.get(email=email)
+            if instructor1.password == str(key):
                 response = redirect('/instructor/instructor_successLogin')
                 response.set_cookie('username', email)
                 response.set_cookie('type', 'instructor')
@@ -96,7 +107,36 @@ def instructor_login(request):
     return render(request, 'instructor_login.html')
 
 def instructor_register(request):
-    global salt
+    if request.method == 'POST':
+        global salt
+        try:
+            fname = request.POST.get('fname')
+            lname = request.POST.get('lname')
+            email = request.POST.get('email')
+            phone = int(request.POST.get('phone'))
+            password = request.POST.get('password')
+            subject = request.POST.get('subject')
+            jobtype = request.POST.get('jobtype')
+            experience = request.POST.get('experience')
+            description = request.POST.get('description')
+            instructor1 = instructor.objects.filter(email=email)
+            if len(instructor1) > 0:
+                return render(request, 'instructor_register.html', {'state': 3})
+            instructor1 = instructor(
+                first_name=fname,
+                last_name=lname,
+                email=email,
+                phone=phone,
+                subjects=subject,
+                job_type=jobtype,
+                experience=experience,
+                description=description,
+                password=str(hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)),
+            )
+            instructor1.save()
+            return render(request, 'instructor_register.html', {'state': 2})
+        except Exception as e:
+            return render(request, 'instructor_register.html', {'state': 4})
     return render(request, 'instructor_register.html')
 
 def instructor_forgot_password(request):
@@ -124,8 +164,8 @@ def college_login(request):
         password = request.POST.get('password')
         key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
         try:
-            college = college.objects.get(email=email)
-            if college.password == str(key):
+            college1 = college.objects.get(email=email)
+            if college1.password == str(key):
                 response = redirect('/college/college_successLogin')
                 response.set_cookie('username', email)
                 response.set_cookie('type', 'college')
@@ -137,7 +177,36 @@ def college_login(request):
     return render(request, 'college_login.html')
 
 def college_register(request):
-    global salt
+    if request.method == 'POST':
+        global salt
+        try:
+            collegename = request.POST.get('collegename')
+            universityname = request.POST.get('universityname')
+            email = request.POST.get('email')
+            phone = int(request.POST.get('phone'))
+            password = request.POST.get('password')
+            country = request.POST.get('country')
+            state = request.POST.get('state')
+            skill = request.POST.get('skill')
+            description = request.POST.get('description')
+            college1 = college.objects.filter(email=email)
+            if len(college1) > 0:
+                return render(request, 'college_register.html', {'state': 3})
+            college1 = college(
+                college_name=collegename,
+                university_name=universityname,
+                email=email,
+                phone=phone,
+                country=country,
+                state=state,
+                skill_set=skill,
+                description=description,
+                password=str(hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)),
+            )
+            college1.save()
+            return render(request, 'college_register.html', {'state': 2})
+        except Exception as e:
+            return render(request, 'college_register.html', {'state': 4})
     return render(request, 'college_register.html')
 
 def college_forgot_password(request):
@@ -165,8 +234,8 @@ def organisation_login(request):
         password = request.POST.get('password')
         key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
         try:
-            organisation = organisation.objects.get(email=email)
-            if organisation.password == str(key):
+            organisation1 = organisation.objects.get(email=email)
+            if organisation1.password == str(key):
                 response = redirect('/organisation/organisation_successLogin')
                 response.set_cookie('username', email)
                 response.set_cookie('type', 'organisation')
@@ -178,7 +247,28 @@ def organisation_login(request):
     return render(request, 'organisation_login.html')
 
 def organisation_register(request):
-    global salt
+    if request.method == 'POST':
+        global salt
+        try:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            phone = int(request.POST.get('phone'))
+            password = request.POST.get('password')
+            description = request.POST.get('description')
+            organisation1 = organisation.objects.filter(email=email)
+            if len(organisation1) > 0:
+                return render(request, 'organisation_register.html', {'state': 3})
+            organisation1 = organisation(
+                organisation_name=name,
+                email=email,
+                phone=phone,
+                description=description,
+                password=str(hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)),
+            )
+            organisation1.save()
+            return render(request, 'organisation_register.html', {'state': 2})
+        except Exception as e:
+            return render(request, 'organisation_register.html', {'state': 4})
     return render(request, 'organisation_register.html')
 
 def organisation_forgot_password(request):
