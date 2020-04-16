@@ -13,7 +13,7 @@ def index(request):
 def user_login(request):
     try:
         if len(request.COOKIES.get('username')) > 0 and request.COOKIES.get('type') == 'student':
-            return redirect('/user/user_successLogin')
+            return redirect('/user/successLogin')
     except Exception as e:
         pass
     if request.method == 'POST':
@@ -24,7 +24,7 @@ def user_login(request):
         try:
             student = studentUser.objects.get(email=email)
             if student.password == str(key):
-                response = redirect('/user/user_successLogin')
+                response = redirect('/user/successLogin')
                 response.set_cookie('username', email)
                 response.set_cookie('type', 'student')
                 return response
@@ -76,7 +76,7 @@ def user_successLogin(request):
     return render(request, 'successLogin.html')
 
 def logout(request):
-    response = redirect('/user/user_login')
+    response = redirect('/user/login')
     response.set_cookie('username', None)
     response.set_cookie('type', None)
     return response
