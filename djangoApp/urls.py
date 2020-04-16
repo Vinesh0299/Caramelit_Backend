@@ -60,6 +60,10 @@ urlpatterns = [
     path('admin/admin_forgot-password', loginviews.admin_forgot_password, name='admin_forgot_password'),
     path('admin/admin_successLogin', loginviews.admin_successLogin, name='admin_successLogin'),
     path('admin/logout', loginviews.admin_logout, name='admin_logout'),
+    path('user/user_list', loginviews.user_list, name='user_list'),
+    path('instructor/instructor_list', loginviews.instructor_list, name='instructor_list'),
+    path('college/college_list', loginviews.college_list, name='college_list'),
+    path('organisation/organisation_list', loginviews.organisation_list, name='organisation_list'),
     # Industries related pages
     path('industries/automotive', staticviews.automotive, name="automotive"),
     path('industries/communication', staticviews.communication, name="communication"),

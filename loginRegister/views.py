@@ -316,10 +316,27 @@ def admin_forgot_password(request):
     return render(request, 'admin_forgotpassword.html')
 
 def admin_successLogin(request):
-    return render(request, 'admin_successLogin.html')
+    admin = adminUser.objects.get(email=request.COOKIES.get('username'))
+    return render(request, 'admin_successLogin.html', {'name': admin.name})
 
 def admin_logout(request):
     response = redirect('/admin/admin_login')
     response.set_cookie('username', None)
     response.set_cookie('type', None)
     return response
+
+def user_list(request):
+    users_data = studentUser.objects.all()
+    return render(request, 'user_list.html', {'users': users_data})
+
+def instructor_list(request):
+    instructor_data = instructor.objects.all()
+    return render(request, 'instructor_list.html', {'instructors': instructor_data})
+
+def college_list(request):
+    college_data = college.objects.all()
+    return render(request, 'college_list.html', {'colleges': college_data})
+
+def organisation_list(request):
+    organisation_data = organisation.objects.all()
+    return render(request, 'organisation_list.html', {'organisations': organisation_data})
