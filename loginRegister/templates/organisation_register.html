@@ -139,6 +139,26 @@
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
         </div>
+
+        <div>
+          <div class="form-group input-group has-feedback ">
+            
+            <input name='password' type="password" id="password" th:field="*{Password}" 
+              placeholder="Password...." class="form-control stureg" required />
+            <span
+              aria-hidden="true"></span>
+          </div>
+      </div>
+
+      <div>
+        <div class="form-group input-group has-feedback ">
+          
+          <input name='rePassword' type="password" id="rePassword" th:field="*{Password}" 
+            placeholder="Re-type Password...." class="form-control stureg" required />
+          <span
+            aria-hidden="true"></span>
+        </div>
+      </div>
         <!--         -------mobile closes--------           -->
       	
         <div class="form-group input-group has-feedback ">
@@ -162,6 +182,48 @@
 		<br>
 		<h3><a href="/organisation/organisation_login" style="color:#111;">Already Registered? Please Login</a></h3><br><br>
       </form>
+      <script>
+        var password = document.getElementById('password');
+        var rePassword = document.getElementById('rePassword');
+
+        var passwordVal = false;
+        var rePasswordVal = false;
+
+        function submitButton() {
+          if(passwordVal & rePasswordVal) {
+              document.getElementById('submitButton').disabled = false;
+          } else {
+              document.getElementById('submitButton').disabled = true;
+          }
+        }
+
+        function validatepassword(e) {
+          if(password.value.length < 8) {
+            password.style.borderColor = 'red';
+            passwordVal = false;
+          } else {
+            password.style.borderColor = 'green';
+            passwordVal = true;
+          }
+
+          submitButton();
+        }
+
+        function validateRePassword(e) {
+          if(rePassword.value.localeCompare(password.value) != 0) {
+            rePassword.style.borderColor = 'red';
+            rePasswordVal = false;
+          } else {
+            rePassword.style.borderColor = 'green';
+            rePasswordVal = true;
+          }
+
+          submitButton();
+        }
+
+        password.addEventListener("keyup", validatepassword);
+        rePassword.addEventListener("keyup", validateRePassword);  
+      </script>
       </div>
       <div class="col-md-3"></div>
      </div>
