@@ -107,6 +107,9 @@ def logout(request):
     response.set_cookie('type', None)
     return response
 
+def successPasswordReset(request):
+    return render(request, 'successResetPassword.html')
+
 # Instructor related pages
 def instructor_login(request):
     try:

@@ -36,6 +36,7 @@ urlpatterns = [
     path('user/forgot-password', loginviews.user_forgot_password, name='user_forgot_password'),
     path('user/successLogin', loginviews.user_successLogin, name='user_successLogin'),
     path('user/logout', loginviews.logout, name='user_logout'),
+    path('user/successPasswordReset', loginviews.successPasswordReset, name='success_password_reset'),
     # Instructor oriented pages
     path('instructor/instructor_login', loginviews.instructor_login, name='instructor_login'),
     path('instructor/instructor_register', loginviews.instructor_register, name='instructor_register'),
