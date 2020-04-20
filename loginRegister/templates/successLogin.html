@@ -184,7 +184,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>First Name</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label>{{ data.fname }}</label>
+	  			  		<label>{{ data.first_name }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -193,7 +193,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Last Name</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label>{{ data.lname }}</label>
+	  			  		<label>{{ data.last_name }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -220,7 +220,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>D.O.B</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${users.dob}">{{ data.birthDate }}</label>
+	  			  		<label th:text="${users.dob}">{{ data.birth_date }}</label>
 	  			  	</div>
 	  			  </div>
 	  			 
@@ -294,7 +294,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>Top Skills</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${users.skill}">{{ data.skills }}</label>
+	  			  			<label th:text="${users.skill}">{{ data.skill_set }}</label>
 	  			  		</div>
 				  	</div>
 	  			</div>
@@ -324,7 +324,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>ID <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{id}" value="{{ data.id }}" readonly="readonly" required/>
+ 								<input type="text" class="form-control" th:field="*{id}" value="{{ data.student_id }}" readonly="readonly" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -332,7 +332,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>First Name <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" name="fname" value="{{ data.fname }}" required/>
+ 								<input type="text" class="form-control" name="fname" value="{{ data.first_name }}" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -340,7 +340,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Last Name <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" name="lname" value="{{ data.lname }}" required/>
+ 								<input type="text" class="form-control" name="lname" value="{{ data.last_name }}" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -443,7 +443,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Skills<i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" name="skills" value="{{ data.skills }}"/>
+ 								<input type="text" class="form-control" name="skills" value="{{ data.skill_set }}"/>
  							</div>
  					</div>
  				<div class="row">

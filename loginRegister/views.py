@@ -77,13 +77,12 @@ def user_successLogin(request):
     if request.method == 'POST':
         if len(username) == 0:
             return redirect('/user/login')
-        student = studentUser.objects.filter(email=username).values()[0]
+        student = studentUser.objects.filter(email=username).values()
         student.update(
             first_name=request.POST.get('fname'),
             last_name=request.POST.get('lname'),
             phone=request.POST.get('phone'),
             email=request.POST.get('email'),
-            birth_date=request.POST.get('birthDate'),
             state=request.POST.get('state'),
             college=request.POST.get('college'),
             skill_set=request.POST.get('skills')
@@ -91,16 +90,7 @@ def user_successLogin(request):
         return redirect('/user/successLogin')
     if len(username) > 0:
         student = studentUser.objects.filter(email=username).values()
-        data = {}
-        data['id'] = student[0].get('student_id')
-        data['fname'] = student[0].get('first_name')
-        data['lname'] = student[0].get('last_name')
-        data['email'] = student[0].get('email')
-        data['phone'] = student[0].get('phone')
-        data['birthDate'] = student[0].get('birth_date')
-        data['state'] = student[0].get('state')
-        data['college'] = student[0].get('college')
-        data['skills'] = student[0].get('skill_set')
+        data = student[0]
         return render(request, 'successLogin.html', {'data': data})
     else:
         return redirect('/user/login')
