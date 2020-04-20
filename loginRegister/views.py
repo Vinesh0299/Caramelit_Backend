@@ -85,6 +85,11 @@ def user_successLogin(request):
             email=request.POST.get('email'),
             state=request.POST.get('state'),
             college=request.POST.get('college'),
+            highest_qualification=request.POST.get('highestQualification'),
+            university_name=request.POST.get('universityName'),
+            roll_no=request.POST.get('rollNo'),
+            specialisation=request.POST.get('specialisation'),
+            college_state=request.POST.get('collegeState'),
             skill_set=request.POST.get('skills')
         )
         return redirect('/user/successLogin')
@@ -176,7 +181,13 @@ def instructor_successLogin(request):
             subjects=request.POST.get('subjects'),
             experience=request.POST.get('experience'),
             job_type=request.POST.get('role'),
-            description=request.POST.get('description')
+            state=request.POST.get('state'),
+            description=request.POST.get('description'),
+            job_organisation_name=request.POST.get('jobOrganisation'),
+            job_experience=request.POST.get('jobExperience'),
+            job_location=request.POST.get('jobLocation'),
+            job_state=request.POST.get('jobState'),
+            skills=request.POST.get('skills')
         )
         return redirect('/instructor/instructor_successLogin')
     if len(username) > 0:

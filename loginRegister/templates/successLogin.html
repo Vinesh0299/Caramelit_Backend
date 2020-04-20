@@ -239,7 +239,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>Highest Qualification</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${users.qualification}"></label>
+	  			  			<label th:text="${users.qualification}">{{ data.highest_qualification }}</label>
 	  			  		</div>
 				  	</div>
 				  	
@@ -257,7 +257,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>University Name</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${users.university}"></label>
+	  			  			<label th:text="${users.university}">{{ data.university_name }}</label>
 	  			  		</div>
 				  	</div>
 				  	
@@ -266,7 +266,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>Roll No</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${users.roll}"></label>
+	  			  			<label th:text="${users.roll}">{{ data.roll_no }}</label>
 	  			  		</div>
 				  	</div>
 				  	
@@ -275,7 +275,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>Specialisation</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${users.specialisation}"></label>
+	  			  			<label th:text="${users.specialisation}">{{ data.specialisation }}</label>
 	  			  		</div>
 				  	</div>
 				  	
@@ -284,7 +284,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>State</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${users.cstate}"></label>
+	  			  			<label th:text="${users.cstate}">{{ data.college_state }}</label>
 	  			  		</div>
 				  	</div>
 				  	
@@ -387,7 +387,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Highest Qualification <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{qualification}" />
+ 								<input type="text" class="form-control" th:field="*{qualification}" value="{{ data.highest_qualification }}" name="highestQualification" />
  							</div>
  						</div>
  						<div class="row form-group">
@@ -403,7 +403,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>University Name <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{university}"/>
+ 								<input type="text" class="form-control" value="{{ data.university_name }}" name="universityName" th:field="*{university}"/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -411,7 +411,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Roll No <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{roll}"/>
+ 								<input type="text" class="form-control" value="{{ data.roll_no }}" name="rollNo" th:field="*{roll}"/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -419,7 +419,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Specialisation <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{specialisation}"/>
+ 								<input type="text" class="form-control" value="{{ data.specialisation }}" name="specialisation" th:field="*{specialisation}"/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -427,7 +427,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>State <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{cstate}"/>
+ 								<input type="text" class="form-control" value="{{ data.college_state }}" name="collegeState" th:field="*{cstate}"/>
  							</div>
  						</div>
  						
