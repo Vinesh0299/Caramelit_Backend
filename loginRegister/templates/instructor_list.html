@@ -125,12 +125,12 @@
                 <td role="cell" th:text="${instructor.email}">{{ instructor.email }}</td>
                 <td role="cell" th:text="${instructor.subject}">{{ instructor.subjects }}</td>
                 <td role="cell" th:text="${instructor.time}">{{ instructor.experience }}</td>
-                <td role="cell" th:text="${instructor.profile}">Profile Details</td>
-                <td role="cell" th:text="${instructor.companyName}">Organisation Name</td>
-                <td role="cell" th:text="${instructor.role}">Role</td>
-                <td role="cell" th:text="${instructor.empExperience}">Employee Experience</td>
-                <td role="cell" th:text="${instructor.cstate}">Company State</td>
-                <td role="cell" th:text="${instructor.skills}">Top Skills</td>
+                <td role="cell" th:text="${instructor.profile}">{{ instructor.description }}</td>
+                <td role="cell" th:text="${instructor.companyName}">{{ instructor.job_organisation_name }}</td>
+                <td role="cell" th:text="${instructor.role}">{{ instructor.job_type }}</td>
+                <td role="cell" th:text="${instructor.empExperience}">{{ instructor.job_experience }}</td>
+                <td role="cell" th:text="${instructor.cstate}">{{ instructor.job_state }}</td>
+                <td role="cell" th:text="${instructor.skills}">{{ instructor.skills }}</td>
                 
             
             </tr>

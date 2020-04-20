@@ -124,13 +124,13 @@
                 <td role="cell" th:text="${user.dob}">{{ user.birth_date }}</td>
                 <td role="cell" th:text="${user.state}">{{ user.state }}</td>
                 <!--  <td role="cell" th:text="${user.country}">Country</td>-->
-                <td role="cell" th:text="${user.qualification}">Highest Qualification</td>
+                <td role="cell" th:text="${user.qualification}">{{ user.highest_qualification }}</td>
                 <td role="cell" th:text="${user.college}">{{ user.college }}</td>
-                <td role="cell" th:text="${user.university}">University Name</td>
-                <td role="cell" th:text="${user.specialisation}">Specialisation</td>
-                <td role="cell" th:text="${user.roll}">Student Roll</td>
+                <td role="cell" th:text="${user.university}">{{ user.university_name }}</td>
+                <td role="cell" th:text="${user.specialisation}">{{ user.specialisation }}</td>
+                <td role="cell" th:text="${user.roll}">{{ user.roll_no }}</td>
                 <td role="cell" th:text="${user.skill}">{{ user.skill_set }}</td>
-                <td role="cell" th:text="${user.cstate}">College State</td>
+                <td role="cell" th:text="${user.cstate}">{{ user.college_state }}</td>
             </tr>
            </tr>
            {% endfor %}
