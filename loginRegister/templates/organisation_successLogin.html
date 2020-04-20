@@ -177,7 +177,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Organisation Name</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${organisations.organisationName}"></label>
+	  			  		<label th:text="${organisations.organisationName}">{{ data.organisation_name }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -187,7 +187,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Email </label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${organisations.email}"></label>
+	  			  		<label th:text="${organisations.email}">{{ data.email }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -196,7 +196,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Mobile Number</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${organisations.mobile}"></label>
+	  			  		<label th:text="${organisations.mobile}">{{ data.phone }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  <div class="row">
@@ -204,7 +204,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>State</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${organisations.state}"></label>
+	  			  		<label th:text="${organisations.state}">{{ data.state }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  <div class="row">
@@ -212,7 +212,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>GSTIN NO</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${organisations.gstNo}"></label>
+	  			  		<label th:text="${organisations.gstNo}">{{ data.gstin_no }}</label>
 	  			  	</div>
 	  			  </div>
 				  <div class="row">
@@ -220,7 +220,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>Others</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${organisations.others}"></label>
+	  			  			<label th:text="${organisations.others}">{{ data.description }}</label>
 	  			  		</div>
 				  	</div>
 	  			</div>
@@ -233,7 +233,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
         <form action="#" th:action="@{/organisation/save}" th:object="${organisations}"
             method="post">
  			
- 			
+ 			{% csrf_token %}
  			
  			<div class="row">
  				<div class="col-md-1"></div>
@@ -252,7 +252,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>ID <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{id}" readonly="readonly" required/>
+ 								<input type="text" class="form-control" value="{{ data.organisation_id }}" th:field="*{id}" readonly="readonly" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -260,7 +260,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Organisation Name <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{organisationName}" required/>
+ 								<input type="text" class="form-control" value="{{ data.organisation_name }}" name="organisation_name" th:field="*{organisationName}" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -268,7 +268,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Email <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{email}" readonly="readonly" required/>
+ 								<input type="text" class="form-control" value="{{ data.email }}" name="email" th:field="*{email}" readonly="readonly" required/>
  							</div>
  						</div>
  						<div class="row form-group" style="display:none;">
@@ -284,7 +284,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Mobile <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{mobile}" required/>
+ 								<input type="text" class="form-control" value="{{ data.phone }}" name="phone" th:field="*{mobile}" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -292,7 +292,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>State <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{state}" required/>
+ 								<input type="text" class="form-control" value="{{ data.state }}" name="state" th:field="*{state}" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -300,7 +300,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>GSTIN NO <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{gstNo}" required/>
+ 								<input type="text" class="form-control" value="{{ data.gstin_no }}" name="gstin_no" th:field="*{gstNo}" required/>
  							</div>
  						</div>
  						
@@ -309,7 +309,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Others<i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<textarea type="text" class="form-control" th:field="*{others}" required/></textarea>
+ 								<textarea type="text" class="form-control" name="description" th:field="*{others}" required/>{{ data.description }}</textarea>
  							</div>
  					</div>
  				<div class="row">

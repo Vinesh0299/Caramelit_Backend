@@ -74,9 +74,13 @@ def user_forgot_password(request):
 
 def user_successLogin(request):
     username = request.COOKIES.get('username')
+    usertype = request.COOKIES.get('type')
+    if len(username) == 0 or usertype != 'student':
+        response = redirect('/user/login')
+        response.set_cookie('username', None)
+        response.set_cookie('type', None)
+        return response
     if request.method == 'POST':
-        if len(username) == 0:
-            return redirect('/user/login')
         student = studentUser.objects.filter(email=username).values()
         student.update(
             first_name=request.POST.get('fname'),
@@ -90,15 +94,12 @@ def user_successLogin(request):
             roll_no=request.POST.get('rollNo'),
             specialisation=request.POST.get('specialisation'),
             college_state=request.POST.get('collegeState'),
-            skill_set=request.POST.get('skills')
+            skill_set=request.POST.get('skills'),
         )
         return redirect('/user/successLogin')
-    if len(username) > 0:
-        student = studentUser.objects.filter(email=username).values()
-        data = student[0]
-        return render(request, 'successLogin.html', {'data': data})
-    else:
-        return redirect('/user/login')
+    student = studentUser.objects.filter(email=username).values()
+    data = student[0]
+    return render(request, 'successLogin.html', {'data': data})
 
 def logout(request):
     response = redirect('/user/login')
@@ -169,9 +170,13 @@ def instructor_forgot_password(request):
 
 def instructor_successLogin(request):
     username = request.COOKIES.get('username')
+    usertype = request.COOKIES.get('type')
+    if len(username) == 0 or usertype != 'instructor':
+        response = redirect('/instructor/instructor_login')
+        response.set_cookie('username', None)
+        response.set_cookie('type', None)
+        return response
     if request.method == 'POST':
-        if len(username) == 0:
-            return redirect('/instructor/instructor_login')
         instructor1 = instructor.objects.filter(email=username).values()
         instructor1.update(
             first_name=request.POST.get('fname'),
@@ -187,15 +192,12 @@ def instructor_successLogin(request):
             job_experience=request.POST.get('jobExperience'),
             job_location=request.POST.get('jobLocation'),
             job_state=request.POST.get('jobState'),
-            skills=request.POST.get('skills')
+            skills=request.POST.get('skills'),
         )
         return redirect('/instructor/instructor_successLogin')
-    if len(username) > 0:
-        instructor1 = instructor.objects.filter(email=username).values()
-        data = instructor1[0]
-        return render(request, 'instructor_successLogin.html', {'data': data})
-    else:
-        return redirect('/instructor/instructor_login')
+    instructor1 = instructor.objects.filter(email=username).values()
+    data = instructor1[0]
+    return render(request, 'instructor_successLogin.html', {'data': data})
 
 def instructor_logout(request):
     response = redirect('/instructor/instructor_login')
@@ -265,7 +267,30 @@ def college_forgot_password(request):
     return render(request, 'college_forgot-password.html')
 
 def college_successLogin(request):
-    return render(request, 'college_successLogin.html')
+    username = request.COOKIES.get('username')
+    usertype = request.COOKIES.get('type')
+    if len(username) == 0 or usertype != 'college':
+        response = redirect('/college/college_login')
+        response.set_cookie('username', None)
+        response.set_cookie('type', None)
+        return response
+    if request.method == 'POST':
+        college1 = college.objects.filter(email=username).values()
+        college1.update(
+            college_name=request.POST.get('collegeName'),
+            university_name=request.POST.get('universityName'),
+            university_type=request.POST.get('universityType'),
+            email=request.POST.get('email'),
+            phone=request.POST.get('phone'),
+            country=request.POST.get('country'),
+            state=request.POST.get('state'),
+            skill_set=request.POST.get('skills'),
+            description=request.POST.get('description'),
+        )
+        return redirect('/college/college_successLogin')
+    college1 = college.objects.filter(email=username).values()
+    data = college1[0]
+    return render(request, 'college_successLogin.html', {'data' : data})
 
 def college_logout(request):
     response = redirect('/college/college_login')
@@ -327,7 +352,27 @@ def organisation_forgot_password(request):
     return render(request, 'organisation_forgotPassword.html')
 
 def organisation_successLogin(request):
-    return render(request, 'organisation_successLogin.html')
+    username = request.COOKIES.get('username')
+    usertype = request.COOKIES.get('type')
+    if len(username) == 0 or usertype != 'organisation':
+        response = redirect('/organisation/organisation_login')
+        response.set_cookie('username', None)
+        response.set_cookie('type', None)
+        return response
+    if request.method == 'POST':
+        organisation1 = organisation.objects.filter(email=username).values()
+        organisation1.update(
+            organisation_name=request.POST.get('organisation_name'),
+            email=request.POST.get('email'),
+            phone=request.POST.get('phone'),
+            state=request.POST.get('state'),
+            gstin_no=request.POST.get('gstin_no'),
+            description=request.POST.get('description'),
+        )
+        return redirect('/organisation/organisation_successLogin')
+    organisation1 = organisation.objects.filter(email=username).values()
+    data = organisation1[0]
+    return render(request, 'organisation_successLogin.html', {'data' : data})
 
 def organisation_logout(request):
     response = redirect('/organisation/organisation_login')
