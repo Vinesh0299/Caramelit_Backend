@@ -184,7 +184,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>First Name</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${instructors.firstName}"></label>
+	  			  		<label>{{ data.first_name }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -193,7 +193,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Last Name</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${instructors.lastName}"></label>
+	  			  		<label th:text="${instructors.lastName}">{{ data.last_name }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -202,7 +202,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Email Adress</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${instructors.email}"></label>
+	  			  		<label th:text="${instructors.email}">{{ data.email }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -211,7 +211,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Subject</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${instructors.subject}"></label>
+	  			  		<label th:text="${instructors.subject}">{{ data.subjects }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -220,7 +220,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Experience</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${instructors.time}"></label>
+	  			  		<label th:text="${instructors.time}">{{ data.experience }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  
@@ -229,7 +229,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>Mobile Number</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${instructors.mobile}"></label>
+	  			  		<label th:text="${instructors.mobile}">{{ data.phone }}</label>
 	  			  	</div>
 	  			  </div>
 	  			   			 
@@ -238,7 +238,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  		<label>State</label>
 	  			  	</div>
 	  			  	<div class="col-md-9">
-	  			  		<label th:text="${instructors.state}"></label>
+	  			  		<label th:text="${instructors.state}">{{ data.state }}</label>
 	  			  	</div>
 	  			  </div>
 	  			  <br>
@@ -258,7 +258,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>Role</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${instructors.role}"></label>
+	  			  			<label th:text="${instructors.role}">{{ data.job_type }}</label>
 	  			  		</div>
 				  	</div>
 				  	
@@ -307,7 +307,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
 	  			  			<label>Profile Details</label>
 	  			  		</div>
 	  			  		<div class="col-md-9">
-	  			  			<label th:text="${instructors.profile}"></label>
+	  			  			<label th:text="${instructors.profile}">{{ data.description }}</label>
 	  			  		</div>
 				  	</div>
 	  			</div>
@@ -320,7 +320,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
             method="post">
  			
  			
- 			
+ 			{% csrf_token %}
  			<div class="row">
  				<div class="col-md-1"></div>
  					<div class="col-md-10">
@@ -338,7 +338,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>ID <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{id}" readonly="readonly" required/>
+ 								<input type="text" class="form-control" value="{{ data.instructor_id }}" readonly="readonly" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -346,7 +346,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>First Name <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{firstName}" required/>
+ 								<input type="text" class="form-control" value="{{ data.first_name }}" name="fname" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -354,7 +354,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Last Name <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{lastName}" required/>
+ 								<input type="text" class="form-control" value="{{ data.last_name }}" name="lname" th:field="*{lastName}" required/>
  							</div>
  						</div>
  						<div class="row form-group">
@@ -362,7 +362,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Email <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{email}" readonly="readonly" required/>
+ 								<input type="text" class="form-control" value="{{ data.email }}" name="email" th:field="*{email}" readonly="readonly" required/>
  							</div>
  						</div>
  						<div class="row form-group" style="display:none;">
@@ -378,7 +378,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Mobile <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{mobile}" required/>
+ 								<input type="text" class="form-control" value="{{ data.phone }}" name="phone" th:field="*{mobile}" required/>
  							</div>
  						</div>
  						
@@ -387,7 +387,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Subject <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{subject}" required/>
+ 								<input type="text" class="form-control" value="{{ data.subjects }}" name="subjects" th:field="*{subject}" required/>
  							</div>
  						</div>
  						
@@ -396,7 +396,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Experience <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{time}" required/>
+ 								<input type="text" class="form-control" th:field="*{time}" value="{{ data.experience }}" name="experience" required/>
  							</div>
  						</div>
  						
@@ -405,7 +405,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>State <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{state}" required/>
+ 								<input type="text" class="form-control" th:field="*{state}" />
  							</div>
  						</div><br/>
  						<div class="row">
@@ -421,7 +421,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Organisation Name<i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{companyName}" required/>
+ 								<input type="text" class="form-control" th:field="*{companyName}" />
  							</div>
  						</div>
  						<div class="row form-group">
@@ -429,7 +429,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Role <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{role}" required/>
+ 								<input type="text" class="form-control" value="{{ data.job_type }}" name="role" th:field="*{role}" />
  							</div>
  						</div>
  						<div class="row form-group">
@@ -437,7 +437,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Experience <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{empExperience}" required/>
+ 								<input type="text" class="form-control" th:field="*{empExperience}" />
  							</div>
  						</div>
  						<div class="row form-group">
@@ -445,7 +445,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Location <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{companyLocation}" required/>
+ 								<input type="text" class="form-control" th:field="*{companyLocation}" />
  							</div>
  						</div>
  						<div class="row form-group">
@@ -453,7 +453,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>State <i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{cstate}" required/>
+ 								<input type="text" class="form-control" th:field="*{cstate}" />
  							</div>
  						</div><br/>
  						<div class="row">
@@ -469,7 +469,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Skills<i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<input type="text" class="form-control" th:field="*{skills}" required/>
+ 								<input type="text" class="form-control" th:field="*{skills}"/>
  							</div>
  					</div>
  					<div class="row form-group">
@@ -477,7 +477,7 @@ background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, F
  								<label>Profile<i style="color:red;">*</i></label>
  							</div>
  							<div class="col-md-8">
- 								<textarea type="text" class="form-control" th:field="*{profile}" required/></textarea>
+ 								<textarea type="text" class="form-control" value="{{ data.description }}" name="description" th:field="*{profile}" required/>{{ data.description }}</textarea>
  							</div>
  					</div>
  				<div class="row">

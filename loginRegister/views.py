@@ -163,7 +163,28 @@ def instructor_forgot_password(request):
     return render(request, 'instructor_forgotPassword.html')
 
 def instructor_successLogin(request):
-    return render(request, 'instructor_successLogin.html')
+    username = request.COOKIES.get('username')
+    if request.method == 'POST':
+        if len(username) == 0:
+            return redirect('/instructor/instructor_login')
+        instructor1 = instructor.objects.filter(email=username).values()
+        instructor1.update(
+            first_name=request.POST.get('fname'),
+            last_name=request.POST.get('lname'),
+            phone=request.POST.get('phone'),
+            email=request.POST.get('email'),
+            subjects=request.POST.get('subjects'),
+            experience=request.POST.get('experience'),
+            job_type=request.POST.get('role'),
+            description=request.POST.get('description')
+        )
+        return redirect('/instructor/instructor_successLogin')
+    if len(username) > 0:
+        instructor1 = instructor.objects.filter(email=username).values()
+        data = instructor1[0]
+        return render(request, 'instructor_successLogin.html', {'data': data})
+    else:
+        return redirect('/instructor/instructor_login')
 
 def instructor_logout(request):
     response = redirect('/instructor/instructor_login')
