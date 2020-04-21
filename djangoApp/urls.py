@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 import loginRegister.views as loginviews
 import staticHome.views as staticviews
+import courses.views as courseviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -86,4 +87,28 @@ urlpatterns = [
     path('business/technology', staticviews.technology, name="technology"),
     path('business/operations', staticviews.operations, name="operations"),
     path('business/Application', staticviews.Application, name="Application"),
+    # Courses
+    path('courses/uicourses', courseviews.uicourses, name="uicourses"),
+    path('courses/backend', courseviews.backend, name="backend"),
+    path('courses/fullstack', courseviews.fullstack, name="fullstack"),
+    path('courses/functionaltesting', courseviews.functionaltesting, name="functionaltesting"),
+    path('courses/mobility', courseviews.mobility, name="mobility"),
+    path('courses/devops', courseviews.devops, name="devops"),
+    path('courses/datascience', courseviews.datascience, name="datascience"),
+    path('courses/cloud', courseviews.cloud, name="cloud"),
+    path('courses/cyber', courseviews.cyber, name="cyber"),
+    path('courses/digital', courseviews.digital, name="digital"),
+    path('courses/erp', courseviews.erp, name="erp"),
+    path('courses/it', courseviews.it, name="it"),
+    path('courses/itcertification', courseviews.itcertification, name="itcertification"),
+    path('courses/coursespage/coreui', courseviews.coreui, name="coreui"),
+    path('courses/coursespage/advancedui', courseviews.advancedui, name="advancedui"),
+    path('courses/coursespage/angularjs', courseviews.angularjs, name="angularjs"),
+    path('courses/coursespage/reactjs', courseviews.reactjs, name="reactjs"),
+    path('courses/coursespage/vuejs', courseviews.vuejs, name="vuejs"),
+    path('courses/coursespage/java', courseviews.java, name="java"),
+    path('courses/coursespage/.net', courseviews.net, name=".net"),
+    path('courses/coursespage/nodejs', courseviews.nodejs, name="nodejs"),
+    # Read more
+    path('coursedetails', courseviews.coursedetails, name="coursedetails"),
 ]

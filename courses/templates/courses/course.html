@@ -1,0 +1,298 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Course UI</title>
+	<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'courses/main.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css" />
+</head>
+<body>
+<div class="super_container">
+
+            <!--Navbar Start-->
+	            <div class="topnav">
+	                <a class="navbar-brand" href="#"><img width="100" height="50" src="{% static 'images/Caramellogo.png' %}"></a>
+	                <div class="topnav-right">
+	                    <ul class="nav nav-bar">
+	                    <div class="hov">
+	                        <li><a href="#">IT Services</a></li>
+	                        <i class="fa fa-chevron-down" style="padding-left: 50%; color: white; font-size: x-large;"></i>
+	                    </div>
+	                    <div class="hov">
+	                        <li><a href="#">Categories</a></li>
+	                        <i class="fa fa-chevron-down" style="padding-left: 50%; color: white; font-size: x-large;"></i>
+	                    </div>
+	                    <div class="hov">
+	                        <li><a href="#">Contact Us</a></li>
+	                    </div>
+	                    <div class="hov">
+	                        <li><a href="#">My Courses</a></li>
+	                        <i class="fa fa-chevron-down" style="padding-left: 50%; color: white; font-size: x-large;"></i>
+	                    </div>
+	                    <div class="hov">
+	                        <i class="fa fa-user fa-3x" style=" margin: 7px 15px 2px 4px; color: white;"></i>
+	                    </div>
+	                    </ul>
+                	</div>
+            	</div>
+
+	<!-- bread crumb -->
+            	<div class="row container-fluid">
+	            	<div class="row container">
+	                	<div class="col topic-list">
+	                        <p>Software Development
+	                        <i class="fa fa-arrow-right fa-2x float-right pg_btn"></i>
+	                        </p>	
+	                   	</div>
+	               		<div class="col topic-list">
+	               			<p>Full Stack Development
+		                    <i class="fa fa-arrow-right fa-2x float-right pg_btn"></i>
+		                    </p>	
+	                   	</div>
+	                	<div class="col topic-list">
+	                		<p>Core UI Development
+	                            <i class="fa fa-arrow-right fa-2x float-right pg_btn"></i>
+	                        </p>	
+	                    </div>
+		                <div class="col topic-list">
+		                    <p>What is HTML<i class="fa fa-arrow-down fa-2x float-right pg_btn"></i></p>
+		                </div>
+		            </div>
+            	</div>
+		<!-- First Half -->
+			<div class="row container-fluid">
+				<div class="col-md-8 container">
+					<iframe class="vid .d-none .d-lg-block .d-xl-none" src="https://www.youtube.com/embed/L7x8wcWbrfk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-4">
+					<div class="ui_list">
+						<div class="toprow">
+	                    	<h3 class="core">Core UI Lecture List:</h3>
+	                    </div>
+	                    <div class="lectures">
+							<div class="boxes">
+			                        <input type="checkbox" id="box-1">
+			                        <label for="box-1">1.1 What is HTML ?<a class="btn coursebtn" href="#">Task</a></label>
+			                        <hr>
+			                        <input type="checkbox" id="box-2" checked>
+			                        <label for="box-2">1.1 What is HTML ?<a class="btn coursebtn" href="#">Task</a> </label>
+			                        <hr>
+			                        <input type="checkbox" id="box-3">
+			                        <label for="box-3">1.1 What is HTML ?<a class="btn coursebtn" href="#">Task</a></label>
+			                        <hr>
+			                         
+			                </div>
+		                	<button class="btn btn-last"><i class="fa fa-arrow-down"></i></button>
+		            	</div>
+		            </div>
+				</div>
+			</div>
+		<!-- Second Half -->
+			<div class="row container-fluid">
+			<!-- Syllabus -->
+				<div class="col-md-8">
+					<div id="accordion">
+						<div class="card">
+						    <div class="rcorner" id="headingOne">
+						    	<h5> What will you learn
+						        <i class="fa fa-arrow-down syl_btn float-right" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></i>
+						    	</h5>
+						    </div>
+						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+						      <div class="card-body">
+						        Pure and Transparent code is devoid of redundant components.<br>
+						        This Means also mobile devices where the navigation is easy and intuitive in a desktop or laptop.<br>
+						        Core UI Layout API Lets you custiomize your project for almost any device - be it mobile webapp or web.<br>
+						        Core UI is the fastest way to build a modern dashboard for any platforms , browser or device<br>
+						        Core UI- Admin Kit is not just another admin template<br>
+						        It goes way beyond hitherto admin templates thanks to transparent code and file structure<br>
+						      </div>
+						    </div>
+						</div>
+						<div class="card">
+						    <div class="rcorner" id="headingTwo">
+						    	<h5> Practice Assignments
+						        <i class="fa fa-arrow-down syl_btn float-right" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></i>
+						    	</h5>
+						    </div>
+						    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+						      <div class="card-body">
+						      	Content2
+						      </div>
+						    </div>
+						</div>
+						<div class="card">
+						    <div class="rcorner" id="headingThree">
+						       <h5> Technical Scenarios
+						        <i class="fa fa-arrow-down syl_btn float-right" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"></i>
+						    	</h5>
+						    </div>
+						    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+						      <div class="card-body">
+						        Content 3
+						      </div>
+						    </div>
+						</div>
+						<div class="card">
+						    <div class="rcorner" id="headingFour">
+						       <h5> Mini Project
+						        <i class="fa fa-arrow-down syl_btn float-right" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"></i>
+						    	</h5>
+						    </div>
+						    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+						      <div class="card-body">
+						        Content 4
+						      </div>
+						    </div>
+						</div>
+						<div class="card">
+						    <div class="rcorner" id="headingFive">
+						       <h5> Discussion Forums & FAQs
+						        <i class="fa fa-arrow-down syl_btn float-right" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"></i>
+						    	</h5>
+						    </div>
+						    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+						      <div class="card-body">
+						        Content 5
+						      </div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			<!-- Skills you learn and Instructor feedback -->
+				<div class="col-md-4">
+					<div class="skills">
+							<div class="row container-fluid">
+								<div class="btn btn-skills">Skills You Learn</div>
+							</div>
+							<div class="row container">
+			                    <button class="btn btn-langs">HTML</button>
+			                    <button class="btn btn-langs">CSS</button>
+			                    <button class="btn btn-langs">Javascript</button>
+			                    <button class="btn btn-langs">UI</button>
+			                    <button class="btn btn-langs">Bootstrap</button>
+			                    <button class="btn btn-langs">Icon</button>
+			                    <button class="btn btn-langs">Graphics</button>
+			                    <button class="btn btn-langs">App</button>
+			                    <button class="btn btn-langs">I-phone</button>
+			                    <button class="btn btn-langs">Android</button>
+			                    <button class="btn btn-langxl">Web Design</button>
+			                </div>
+		            </div>
+		            <div class="row container-fluid">
+		            	<div class="instructor">
+			                <form>
+			                	<div class="form-group">
+			                		<p class = "message">Did you not understand something ? <br>Ask Your Instructor !</p>
+			                	</div>
+			   	                <div class="form-group justify-content-center align-items-center">
+			                        <textarea name="message" id="message" class="form-control messageArea" placeholder="Enter Message"></textarea>
+			                    </div>
+			                    <button type="submit" class="btn btnsend float-right">Send</button>
+			                </form>
+            			</div>
+		            </div>
+				</div>
+			</div>
+			<!-- Slider -->
+				<div class="swiper-container">
+      						<h2>OTHER RELEVANT COURSES</h2>
+		      			<div class="swiper-wrapper">
+		                    	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+			                      	<div>
+			                          <h5 class="container  py-4">Course 1</h5>
+			                          <p>course desciption</p>
+			                      	</div>
+		                  		</div>
+		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+		                      		<div>
+		                      		 	<h5 class="container py-4">Course 2</h5>
+		                        		<p>course desciption</p>
+		                        	</div>
+		                        </div>
+		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+			                      	<div>
+			                      	   <h5 class="container py-4">Course 3</h5>
+			                        	<p>course desciption</p>
+			                        </div>
+		                    	</div>
+		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+		                      		<div>  
+		                      		 <h5 class="container py-4">Course 4</h5> <p>course desciption</p>
+		                      		</div>
+		                      	</div>
+		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+			                      	<div>
+			                      	   <h5 class="container py-4">Course 5</h5> <p>course desciption</p>
+			                      	</div>
+		                    	</div>
+		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+		                      		<div>   
+		                      			<h5 class="container py-4">Course 6</h5> <p>course desciption</p>
+		                      		</div>
+		                      	</div>
+		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+		                      		<div>   
+		                      		<h5 class="container py-4">Course 7</h5> <p>course desciption</p>
+		                      		</div>
+		                      	</div>
+		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
+		                      		<div>   
+		                      			<h5 class="container py-4">Course 8</h5> <p>course desciption</p>
+		                      		</div>
+		                      	</div>
+		                </div>
+               	</div>
+			<!-- Foooter -->
+			<div class="footer">
+				<div class="row gap_u">
+						<div class="row container-fluid justify-content-center align-items-center ">
+							<div class="text-center social">
+								<i class="fab fa-facebook-f fa-2x"></i>
+								<i class="fab fa-instagram fa-2x gap_l"></i>
+								<i class="fab fa-pinterest-square fa-2x gap_l"></i>
+								<i class="fab fa-twitter-square fa-2x gap_l"></i>
+								<i class="fab fa-linkedin-in fa-2x gap_l"></i>
+							</div>
+						</div>
+						<div class="row container-fluid justify-content-center align-items-center">
+							<div class="cr text-center"><h3>©2020 All Rights Reserverd By Caramel IT Services Pvt. Ltd.</h3></div>
+						</div>
+				</div>
+			</div>
+</div>
+
+
+
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/js/swiper.js"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script src="{% static 'staticHome/javascript/index.js' %}"></script>
+<script type="text/javascript">
+	var swiper = new Swiper(".swiper-container", {
+  slidesPerView: 5,
+  spaceBetween: 40,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+</script>
+</body>
+</html>

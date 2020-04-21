@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'loginRegister.apps.LoginregisterConfig',
     'staticHome.apps.StatichomeConfig',
+    'courses.apps.CoursesConfig',
 ]
 
 MIDDLEWARE = [
