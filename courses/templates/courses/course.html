@@ -14,32 +14,36 @@
 <body>
 <div class="super_container">
 
-            <!--Navbar Start-->
-	            <div class="topnav">
-	                <a class="navbar-brand" href="#"><img width="100" height="50" src="{% static 'images/Caramellogo.png' %}"></a>
-	                <div class="topnav-right">
-	                    <ul class="nav nav-bar">
-	                    <div class="hov">
-	                        <li><a href="#">IT Services</a></li>
-	                        <i class="fa fa-chevron-down" style="padding-left: 50%; color: white; font-size: x-large;"></i>
-	                    </div>
-	                    <div class="hov">
-	                        <li><a href="#">Categories</a></li>
-	                        <i class="fa fa-chevron-down" style="padding-left: 50%; color: white; font-size: x-large;"></i>
-	                    </div>
-	                    <div class="hov">
-	                        <li><a href="#">Contact Us</a></li>
-	                    </div>
-	                    <div class="hov">
-	                        <li><a href="#">My Courses</a></li>
-	                        <i class="fa fa-chevron-down" style="padding-left: 50%; color: white; font-size: x-large;"></i>
-	                    </div>
-	                    <div class="hov">
-	                        <i class="fa fa-user fa-3x" style=" margin: 7px 15px 2px 4px; color: white;"></i>
-	                    </div>
-	                    </ul>
-                	</div>
-            	</div>
+             <!--Navbar Start-->
+        <nav class="navbar navbar-expand-lg navbar-dark" style ="background-color: #002333;">
+ 			<a class="navbar-brand" href="#">
+    			<img src="{% static 'images/Caramellogo.png' %}" width="150" height="40" alt="LOGO">
+  			</a>
+  			<!-- Collapse button -->
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+  			<!-- Collapsible content -->
+			<div class="collapse navbar-collapse" id="basicExampleNav">
+			    <!-- Links -->
+			    <ul class="navbar-nav ml-auto">
+			     	<li class="nav-item active">
+			        	<a class="nav-link" href="#">IT Services Solution</a>
+			      	</li>
+				    <!-- Dropdown -->
+				    <li class="nav-item dropdown active">
+				       <a class="nav-link dropdown-toggle" id="course_list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+				    <div class="dropdown-menu dropdown-primary" aria-labelledby="course_list">
+				        <a class="dropdown-item" href="#">UI Courses</a>
+				        <a class="dropdown-item" href="#">Backend</a>
+				        <a class="dropdown-item" href="#">IT</a>
+				    </div>
+				    </li>
+				    <li class="nav-item active">
+			        	<a class="nav-link" href="#">Contact Us</a>
+				    </li>
+			    </ul>
+			</div>
+		</nav>
 
 	<!-- bread crumb -->
             	<div class="row container-fluid">
@@ -65,34 +69,113 @@
 		            </div>
             	</div>
 		<!-- First Half -->
-			<div class="row container-fluid">
-				<div class="col-md-8 container">
-					<iframe class="vid .d-none .d-lg-block .d-xl-none" src="https://www.youtube.com/embed/L7x8wcWbrfk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
-				<div class="col-md-4">
-					<div class="ui_list">
-						<div class="toprow">
-	                    	<h3 class="core">Core UI Lecture List:</h3>
-	                    </div>
-	                    <div class="lectures">
-							<div class="boxes">
-			                        <input type="checkbox" id="box-1">
-			                        <label for="box-1">1.1 What is HTML ?<a class="btn coursebtn" href="#">Task</a></label>
-			                        <hr>
-			                        <input type="checkbox" id="box-2" checked>
-			                        <label for="box-2">1.1 What is HTML ?<a class="btn coursebtn" href="#">Task</a> </label>
-			                        <hr>
-			                        <input type="checkbox" id="box-3">
-			                        <label for="box-3">1.1 What is HTML ?<a class="btn coursebtn" href="#">Task</a></label>
-			                        <hr>
-			                         
-			                </div>
-		                	<button class="btn btn-last"><i class="fa fa-arrow-down"></i></button>
-		            	</div>
-		            </div>
-				</div>
-			</div>
-		<!-- Second Half -->
+        <div class="container-fluid main">
+            <div class="row container-fluid">
+                <div class="col-md-8">
+                    <div class="newDiv">
+                    <img src="{% static 'images/Caramellogo.png' %}" class="img-fluid" id="course-img" alt="File Not Found"></div>
+                </div>
+                
+                
+                <div class = "col-md-4">
+                    <div class = "lecturelist">
+                    
+                    
+                    
+                    <div class="toprow">
+                    <div class = "duration">
+                        15 Lectures (29m 00s)
+                    </div>
+                    
+                    
+
+                
+            
+                    
+                
+                    
+                    <div class="lec-title" id="1">
+                        <div class = "title" > 1.  Topic 1</div>
+                        <div class= "lec-duration">1:56</div>
+                    </div>
+                    
+                    <div class="lec-title" id="2">
+                        <div class = "title" > 2.  Topic 2</div>
+                        <div class= "lec-duration">1:56</div>
+                    </div>
+            
+                    <div class="lec-title" id="3">
+                        <div class = "title" > 3.  Topic 3</div>
+                        <div class= "lec-duration">1:56</div>
+                        </div>
+                            
+                    <div class="lec-title" id="4">
+                        <div class = "title" > 4.  Topic 4</div>
+                        <div class= "lec-duration">1:56</div>
+                        </div> 
+                     
+                        <div class="lec-title" id="5">
+                            <div class = "title" > 5.  Topic 5</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+                        
+                        <div class="lec-title" id="6">
+                            <div class = "title" > 6.  Topic 6</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+                
+                        <div class="lec-title" id="7">
+                            <div class = "title" > 7.  Topic 7</div>
+                            <div class= "lec-duration">1:56</div>
+                            </div>
+                                
+                        <div class="lec-title" id="8">
+                            <div class = "title" > 8.  Topic 8</div>
+                            <div class= "lec-duration">1:56</div>
+                            </div>
+                            
+                        <div class="lec-title" id="9">
+                            <div class = "title" > 9.  Topic 9</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div> 
+                        
+                        <div class="lec-title" id="10">
+                            <div class = "title" >10. Topic 10</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+                        
+                        <div class="lec-title" id="11">
+                            <div class = "title" >11. Topic 11</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+                        
+                        <div class="lec-title" id="12">
+                            <div class = "title" >12. Topic 12</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+
+                        <div class="lec-title" id="13">
+                            <div class = "title" >13. Topic 13</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+
+                        <div class="lec-title" id="14">
+                            <div class = "title" >14. Topic 14</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+
+                        <div class="lec-title" id="15">
+                            <div class = "title" >15. Topic 15</div>
+                            <div class= "lec-duration">1:56</div>
+                        </div>
+                         
+            
+        </div>    
+        </div>
+         </div>
+        </div>
+        </div>
+        	<!-- Second Half -->
 			<div class="row container-fluid">
 			<!-- Syllabus -->
 				<div class="col-md-8">
@@ -294,5 +377,6 @@
 });
 
 </script>
+<script type="text/javascript" src="{% static 'staticHome/javascript/course.js' %}"></script>
 </body>
 </html>
