@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from .models import Course
+
+# List all courses
+def course_list(request):
+    courses = Course.objects.all()
+    return render(request, 'courses/courses.html', {'data' : courses})
 
 # Course pages
 def uicourses(request):

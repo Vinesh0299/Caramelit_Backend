@@ -18,6 +18,8 @@ class Course_subcategory(models.Model):
 class Course(models.Model):
     course_id = models.AutoField(primary_key=True)
     subcategory = models.ForeignKey(Course_subcategory, on_delete=models.CASCADE)
+    subcategory_name = models.CharField(max_length=100)
+    category_name = models.CharField(max_length=100)
     course_name = models.CharField(max_length=100)
     date_of_creation = models.DateTimeField(default=timezone.now)
     course_difficulty = models.CharField(max_length=30)
