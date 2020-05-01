@@ -67,6 +67,8 @@ urlpatterns = [
     path('college/college_list', loginviews.college_list, name='college_list'),
     path('organisation/organisation_list', loginviews.organisation_list, name='organisation_list'),
     path('course/list_course', courseviews.course_list, name="course_list"),
+    path('course/new_course', courseviews.new_course, name="new_course"),
+    path('course/course_resource', courseviews.course_resource, name="course_resource"),
     # Industries related pages
     path('industries/automotive', staticviews.automotive, name="automotive"),
     path('industries/communication', staticviews.communication, name="communication"),

@@ -22,24 +22,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="course : ${listCourses}">
-                <td th:text="${course.id}">Course ID</td>
-                <td th:text="${course.courseName}">Course Name</td>
-                <td>Course Category</td>
-                <td>
-                    <a href="#">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/course/delete/' + ${course.id}}">Delete</a>
-                </td>
-            </tr>
             {% for course in Courses %}
                 <tr>
                     <td>{{ course.course_id }}</td>
                     <td>{{ course.course_name }}</td>
                     <td>{{ course.category_name }}</td>
                     <td>
-                        <a>Edit</a>
-                        <a>Delete</a>
+                        <a href="course/edit/{{ course.course_id }}">Edit</a>
+                        <a href="course/delete/{{ course.course_id }}">Delete</a>
                     </td>
                 </tr>
             {% endfor %}
