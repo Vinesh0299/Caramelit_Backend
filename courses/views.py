@@ -3,8 +3,8 @@ from .models import Course, Course_resource, Course_category, Course_subcategory
 
 # List all courses
 def course_list(request):
-    courses = Course.objects.all()
-    return render(request, 'courses/courses.html', {'data' : courses})
+    courses = Course.objects.all().values()
+    return render(request, 'courses/courses.html', {'Courses' : courses})
 
 def new_course(request):
     if request.method == 'POST':
@@ -14,12 +14,12 @@ def new_course(request):
         course_difficulty = request.POST.get('coursedifficulty')
         resource = request.POST.get('numResource')
         response = redirect('/course/course_resource')
-        course_cat = Course(category_name=category_name)
+        course_cat = Course_category(category_name=category_name)
         course_cat.save()
-        course_subcat = Course_subcategory(subcategory_name=subcategory_name, category=course_cat.category_id)
+        course_subcat = Course_subcategory(subcategory_name=subcategory_name, category=course_cat)
         course_subcat.save()
         course = Course(
-            subcategory=course_subcat.subcategory_id,
+            subcategory=course_subcat,
             subcategory_name=subcategory_name,
             category_name=category_name,
             course_name=course_name,
@@ -39,15 +39,19 @@ def course_resource(request):
     resources = resources[1:-1].replace("'", "").split(',')
     if request.method == 'POST':
         res = len(resources)
+        course = Course.objects.filter(course_id=request.COOKIES.get('course_id'))[0]
         for resource in resources:
             Course_res = Course_resource(
-                course=int(request.COOKIES.get('course_id')),
+                course=course,
                 resourse_name=request.POST.get(resource+'_name'),
                 resourse_link=request.POST.get(resource+'_link'),
-                resource_length=request.POST.get(resource+'_length'),
+                resourse_length=request.POST.get(resource+'_length'),
             )
             Course_res.save()
     return render(request, 'courses/course_resource.html', {'resources' : resources })
+
+def delete_course(request):
+    return redirect('/course/list_course')
 
 # Course pages
 def uicourses(request):
