@@ -12,6 +12,7 @@ def new_course(request):
         category_name = request.POST.get('categoryname')
         subcategory_name = request.POST.get('subcategoryname')
         course_difficulty = request.POST.get('coursedifficulty')
+        course_description = request.POST.get('coursedescription')
         resource = request.POST.get('numResource')
         response = redirect('/course/course_resource')
         course_cat = Course_category(category_name=category_name)
@@ -24,6 +25,7 @@ def new_course(request):
             category_name=category_name,
             course_name=course_name,
             course_difficulty=course_difficulty,
+            course_description=course_description,
         )
         course.save()
         resources = []
@@ -50,13 +52,33 @@ def course_resource(request):
             Course_res.save()
     return render(request, 'courses/course_resource.html', {'resources' : resources })
 
+def edit_course(request, courseID):
+    course = Course.objects.filter(course_id=courseID).values()
+    if request.method == 'POST':
+        course_name = request.POST.get('coursename')
+        category_name = request.POST.get('categoryname')
+        subcategory_name = request.POST.get('subcategoryname')
+        course_difficulty = request.POST.get('coursedifficulty')
+        course_description = request.POST.get('coursedescription')
+        course.update(
+            subcategory_name=subcategory_name,
+            category_name=category_name,
+            course_name=course_name,
+            course_difficulty=course_difficulty,
+            course_description=course_description,
+        )
+        return redirect('/course/list_course')
+    return render(request, 'courses/edit_course.html', {'data' : course[0]})
+
 def delete_course(request, courseID):
     Course.objects.filter(course_id=courseID).delete()
     return redirect('/course/list_course')
 
 # Course pages
 def uicourses(request):
-    uicourse = Course.objects.filter(course_name="uicourses")
+    if request.COOKIES.get('username') == None or request.COOKIES.get('username') == 'None':
+        return redirect('/user/login')
+    uicourse = Course.objects.filter(course_id=2)
     uicourse_resource = Course_resource.objects.filter(course=uicourse[0])
     similar = Course.objects.filter(category_name=uicourse[0].category_name)
     return render(request, 'courses/course.html', {'course' : uicourse[0], 'course_resource' : uicourse_resource, 'similar' : similar, 'lectures' : len(uicourse_resource)})

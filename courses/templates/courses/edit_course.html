@@ -81,12 +81,21 @@ color:#111;
 <div class="row">
     <div class="col-md-1"></div>
         <div class="col-md-10">
+            <div class="row form-group mt-2">
+ 							
+                <div class="col-md-4">
+                    <label>Course ID <i style="color:red;">*</i></label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" th:field="*{id}" value="{{ data.course_id }}" readonly="readonly" required/>
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <label>Course Name <i style="color:red;">*</i></label>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="coursename" required/>
+                    <input type="text" class="form-control" value="{{ data.course_name }}" name="coursename" required/>
                 </div>
             </div>
             <div class="row form-group">
@@ -94,7 +103,7 @@ color:#111;
                     <label>Category Name <i style="color:red;">*</i></label>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="categoryname" required/>
+                    <input type="text" class="form-control" value="{{ data.category_name }}" name="categoryname" required/>
                 </div>
             </div>
             <div class="row form-group">
@@ -102,7 +111,7 @@ color:#111;
                     <label>Sub-Category Name <i style="color:red;">*</i></label>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="subcategoryname" required/>
+                    <input type="text" class="form-control" value="{{ data.subcategory_name }}" name="subcategoryname" required/>
                 </div>
             </div>
             <div class="row form-group">
@@ -110,22 +119,7 @@ color:#111;
                     <label>Course Difficulty <i style="color:red;">*</i></label>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="coursedifficulty" required/>
-                </div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-md-8">
-                <h5><b>Course Resources</b></h5>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-            <div class="row form-group mt-2">
-                <div class="col-md-4">
-                    <label>Number of Resources/Videos <i style="color:red;">*</i></label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" th:field="*{qualification}" name="numResource" />
+                    <input type="text" class="form-control" value="{{ data.course_difficulty }}" name="coursedifficulty" required/>
                 </div>
             </div>
             <div class="row form-group">
@@ -133,7 +127,7 @@ color:#111;
                     <label>Course Description <i style="color:red;">*</i></label>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="coursedescription" required/>
+                    <input type="text" class="form-control" value="{{ data.course_description }}" name="coursedescription" required/>
                 </div>
             </div>
     <div class="row">
