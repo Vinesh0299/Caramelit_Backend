@@ -1,13 +1,22 @@
 # Caramelit_Backend
 Code for the Caramel IT Academy's Website
 
+## Location of Templates
+All the static pages i.e. the main page for the Caramel IT website along with academy, consortium etc. pages can be found in the django App staticHome<br />
 
-## Contact Us Section
-html file for the contact us form is under templates directory and css and JS files can be found under the static folder along with the images for webpage
+A different App for handing User login and registration is created with name loginRegister<br />
+Schema for user profiles can be found in models.py file under the loginRegister directory<br />
 
-validinput.js file takes the content of inputs name, email, phone and pincode and applies a simple check on them. Only when all checks are passed will the user be able to submit the form
+Courses are handled by the app named courses under the directory of the same name i.e. courses.<br />
+Database schema for courses, course category, sub category etc can be found in models.py file under courses directory.<br />
 
-flaskserver.py file takes the input from after the form is submitted and sends a mail through the flask_mail library which uses smtp server for sending mail.
-All required details for mailing are stored in configmail.cfg file like sender mail username, password etc.
+## Logic for each webpage
+Views.py file under every app directory contains the logic for user authorization, registration, courses etc.<br />
+urls.py file under the djangoApp directory contains all the defined urls that the app supports.<br />
 
-There is a ticket number variable that increases everytime a mail is successfully sent. The content of the mail as of now is simple it just list all the details in 'key: value' format
+## Changin Database from mysql to MongoDB
+Changing the database in django is fairly simple and very convenient.<br />
+Django has its own ORM(Object Relational Mapper), which does convertion of logic into SQL/NoSQL queries for us.<br />
+In short, we don't need to know database query language at all. We can simply define models as class in models.py file in each app and use those classes and their predefined functions to work in database. The database queries will be handled by Django for us.<br />
+To Change the type of database we simply need to go to setting.py file under djangoApp directory and change the value of 'DATABASES' variable.<br />
+Using this we can simply change the database without changing any of the code in our django app.<br />
