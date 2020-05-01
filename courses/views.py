@@ -50,7 +50,8 @@ def course_resource(request):
             Course_res.save()
     return render(request, 'courses/course_resource.html', {'resources' : resources })
 
-def delete_course(request):
+def delete_course(request, courseID):
+    Course.objects.filter(course_id=courseID).delete()
     return redirect('/course/list_course')
 
 # Course pages

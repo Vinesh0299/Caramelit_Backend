@@ -92,8 +92,8 @@ color:#111;
                     <td>{{ course.course_name }}</td>
                     <td>{{ course.category_name }}</td>
                     <td>
-                        <a href="course/edit/{{ course.course_id }}">Edit</a>
-                        <a href="course/delete?courseID={{ course.course_id }}">Delete</a>
+                        <a href="edit/{{ course.course_id }}">Edit</a>
+                        <a href="delete/{{ course.course_id }}">Delete</a>
                     </td>
                 </tr>
             {% endfor %}

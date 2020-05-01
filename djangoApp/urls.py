@@ -69,7 +69,7 @@ urlpatterns = [
     path('course/list_course', courseviews.course_list, name="course_list"),
     path('course/new_course', courseviews.new_course, name="new_course"),
     path('course/course_resource', courseviews.course_resource, name="course_resource"),
-    path('course/delete', courseviews.delete_course, name="delete_course"),
+    path('course/delete/<int:courseID>', courseviews.delete_course, name="delete_course"),
     # Industries related pages
     path('industries/automotive', staticviews.automotive, name="automotive"),
     path('industries/communication', staticviews.communication, name="communication"),
