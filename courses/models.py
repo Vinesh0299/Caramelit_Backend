@@ -22,6 +22,7 @@ class Course(models.Model):
     category_name = models.CharField(max_length=100)
     course_name = models.CharField(max_length=100)
     date_of_creation = models.DateTimeField(default=timezone.now)
+    course_description = models.TextField(default="")
     course_difficulty = models.CharField(max_length=30)
 
 # Course resources

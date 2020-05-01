@@ -56,7 +56,10 @@ def delete_course(request, courseID):
 
 # Course pages
 def uicourses(request):
-    return render(request, 'courses/course.html')
+    uicourse = Course.objects.filter(course_name="uicourses")
+    uicourse_resource = Course_resource.objects.filter(course=uicourse[0])
+    similar = Course.objects.filter(category_name=uicourse[0].category_name)
+    return render(request, 'courses/course.html', {'course' : uicourse[0], 'course_resource' : uicourse_resource, 'similar' : similar, 'lectures' : len(uicourse_resource)})
 
 def backend(request):
     return render(request, 'courses/course.html')

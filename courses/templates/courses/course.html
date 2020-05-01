@@ -88,8 +88,6 @@
 		width: 100%;
 		color: white;
 		font-size: 20px;
-		
-		
 	}
 	.duration{
 		margin-left:10px;
@@ -109,6 +107,7 @@
 		
 	}
 	.lec-title:hover{
+		cursor: pointer;
 		border: 1px solid grey;
 		border-radius : 10px;
 
@@ -375,7 +374,7 @@
 			    <!-- Links -->
 			    <ul class="navbar-nav ml-auto">
 			     	<li class="nav-item active">
-			        	<a class="nav-link" href="#">IT Services Solution</a>
+			        	<a class="nav-link" href="/">IT Services Solution</a>
 			      	</li>
 				    <!-- Dropdown -->
 				    <li class="nav-item dropdown">
@@ -387,7 +386,7 @@
 				    </div>
 				    </li>
 				    <li class="nav-item active">
-			        	<a class="nav-link" href="contact/academycontact">Contact Us</a>
+			        	<a class="nav-link" href="/contact/academycontact">Contact Us</a>
 				    </li>
 			    </ul>
 			</div>
@@ -397,22 +396,17 @@
             	<div class="row container-fluid">
 	            	<div class="row container">
 	                	<div class="col topic-list">
-	                        <p>Software Development
+	                        <p>{{ course.category_name }}
 	                        <i class="fa fa-arrow-right fa-2x float-right pg_btn"></i>
 	                        </p>	
 	                   	</div>
 	               		<div class="col topic-list">
-	               			<p>Full Stack Development
+	               			<p>{{ course.subcategory_name }}
 		                    <i class="fa fa-arrow-right fa-2x float-right pg_btn"></i>
 		                    </p>	
 	                   	</div>
-	                	<div class="col topic-list">
-	                		<p>Core UI Development
-	                            <i class="fa fa-arrow-right fa-2x float-right pg_btn"></i>
-	                        </p>	
-	                    </div>
 		                <div class="col topic-list">
-		                    <p>What is HTML<i class="fa fa-arrow-down fa-2x float-right pg_btn"></i></p>
+		                    <p>{{ course.course_name }}<i class="fa fa-arrow-down fa-2x float-right pg_btn"></i></p>
 		                </div>
 		            </div>
             	</div>
@@ -421,101 +415,36 @@
             <div class="row container-fluid">
                 <div class="col-md-8">
                     <div class="newDiv">
-                    <img src="" class="img-fluid" id="course-img" alt="File Not Found"></div>
+					<video id="course-img" controls>
+						<!-- Set this to the first video -->
+						<source src='{{ resources.resourse_length }}' type='video/mp4'>
+					</video>
+					</div>
                 </div>
                 
                 
                 <div class = "col-md-4">
                     <div class = "lecturelist">
                     
-                    
-                    
                     <div class="toprow">
                     <div class = "duration">
-                        15 Lectures (29m 00s)
+                        {{ lectures }} Lectures
                     </div>
-                    
-                    
-
-                
-            
-                    
-                
-                    
-                    <div class="lec-title" id="1">
-                        <div class = "title" > 1.  Topic 1</div>
-                        <div class= "lec-duration">1:56</div>
-                    </div>
-                    
-                    <div class="lec-title" id="2">
-                        <div class = "title" > 2.  Topic 2</div>
-                        <div class= "lec-duration">1:56</div>
-                    </div>
-            
-                    <div class="lec-title" id="3">
-                        <div class = "title" > 3.  Topic 3</div>
-                        <div class= "lec-duration">1:56</div>
-                        </div>
-                            
-                    <div class="lec-title" id="4">
-                        <div class = "title" > 4.  Topic 4</div>
-                        <div class= "lec-duration">1:56</div>
-                        </div> 
-                     
-                        <div class="lec-title" id="5">
-                            <div class = "title" > 5.  Topic 5</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
-                        
-                        <div class="lec-title" id="6">
-                            <div class = "title" > 6.  Topic 6</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
-                
-                        <div class="lec-title" id="7">
-                            <div class = "title" > 7.  Topic 7</div>
-                            <div class= "lec-duration">1:56</div>
-                            </div>
-                                
-                        <div class="lec-title" id="8">
-                            <div class = "title" > 8.  Topic 8</div>
-                            <div class= "lec-duration">1:56</div>
-                            </div>
-                            
-                        <div class="lec-title" id="9">
-                            <div class = "title" > 9.  Topic 9</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div> 
-                        
-                        <div class="lec-title" id="10">
-                            <div class = "title" >10. Topic 10</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
-                        
-                        <div class="lec-title" id="11">
-                            <div class = "title" >11. Topic 11</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
-                        
-                        <div class="lec-title" id="12">
-                            <div class = "title" >12. Topic 12</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
-
-                        <div class="lec-title" id="13">
-                            <div class = "title" >13. Topic 13</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
-
-                        <div class="lec-title" id="14">
-                            <div class = "title" >14. Topic 14</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
-
-                        <div class="lec-title" id="15">
-                            <div class = "title" >15. Topic 15</div>
-                            <div class= "lec-duration">1:56</div>
-                        </div>
+					
+					{% for resource in course_resource %}
+                    <div class="lec-title" id="{{ resource.resourse_name }}">
+                        <div class = "title" > {{ resource.resourse_name }}</div>
+                        <div class= "lec-duration">{{ resource.resourse_length }}</div>
+					</div>
+					<script>
+						video = document.getElementById("course-img");
+						button = document.getElementById("{{ resource.resourse_name }}");
+						button.addEventListener("click", function (){
+							// Change this to the video source for the lecture
+							video.innerHTML = "<source src='{{ resource.resourse_length }}' type='video/mp4'>"
+						});
+					</script>
+					{% endfor %}
                          
             
         </div>    
@@ -634,49 +563,14 @@
 				<div class="swiper-container">
       						<h2>OTHER RELEVANT COURSES</h2>
 		      			<div class="swiper-wrapper">
+							  {% for sim in similar %}
 		                    	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
 			                      	<div>
-			                          <h5 class="container  py-4">Course 1</h5>
-			                          <p>course desciption</p>
+			                          <h5 class="container  py-4">{{ sim.course_name }}</h5>
+			                          <p>{{ sim.course_description }}</p>
 			                      	</div>
-		                  		</div>
-		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
-		                      		<div>
-		                      		 	<h5 class="container py-4">Course 2</h5>
-		                        		<p>course desciption</p>
-		                        	</div>
-		                        </div>
-		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
-			                      	<div>
-			                      	   <h5 class="container py-4">Course 3</h5>
-			                        	<p>course desciption</p>
-			                        </div>
-		                    	</div>
-		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
-		                      		<div>  
-		                      		 <h5 class="container py-4">Course 4</h5> <p>course desciption</p>
-		                      		</div>
-		                      	</div>
-		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
-			                      	<div>
-			                      	   <h5 class="container py-4">Course 5</h5> <p>course desciption</p>
-			                      	</div>
-		                    	</div>
-		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
-		                      		<div>   
-		                      			<h5 class="container py-4">Course 6</h5> <p>course desciption</p>
-		                      		</div>
-		                      	</div>
-		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
-		                      		<div>   
-		                      		<h5 class="container py-4">Course 7</h5> <p>course desciption</p>
-		                      		</div>
-		                      	</div>
-		                      	<div class="swiper-slide"><a href="#" class="fav" onclick="fav()"><i class="fas fa-heart"></i></a>
-		                      		<div>   
-		                      			<h5 class="container py-4">Course 8</h5> <p>course desciption</p>
-		                      		</div>
-		                      	</div>
+								  </div>
+								{% endfor %}
 		                </div>
                	</div>
 			<!-- Foooter -->
@@ -725,6 +619,5 @@
 });
 
 </script>
-<script type="text/javascript" src="{% static 'staticHome/javascript/course.js' %}"></script>
 </body>
 </html>
