@@ -409,7 +409,26 @@ def admin_login(request):
     return render(request, 'admin_login.html')
 
 def admin_register(request):
-    global salt
+    if request.method == 'POST':
+        global salt
+        try:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            phone = int(request.POST.get('phone'))
+            password = request.POST.get('password')
+            admin1 = adminUser.objects.filter(email=email)
+            if len(admin1) > 0:
+                return render(request, 'admin_register.html', {'state': 3})
+            admin1 = adminUser(
+                name=name,
+                email=email,
+                phone=phone,
+                password=str(hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)),
+            )
+            admin1.save()
+            return render(request, 'organisation_register.html', {'state': 2})
+        except Exception as e:
+            return render(request, 'admin_register.html', {'state': 4})
     return render(request, 'admin_register.html')
 
 def admin_forgot_password(request):
