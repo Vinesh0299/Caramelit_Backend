@@ -415,10 +415,7 @@
             <div class="row container-fluid">
                 <div class="col-md-8">
                     <div class="newDiv">
-					<video id="course-img" controls>
-						<!-- Set this to the first video -->
-						<source src='{{ resources.resourse_length }}' type='video/mp4'>
-					</video>
+						<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSktIJ_uNUy7zihr46kxioOV1k-E3BCjvuk2Jdi2uzZ6Q8DzlHPZXV0qHkX4q99fA/embed?start=false&loop=false&delayms=3000" frameborder="0" id="course-img" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 					</div>
                 </div>
                 
@@ -441,7 +438,7 @@
 						button = document.getElementById("{{ resource.resourse_name }}");
 						button.addEventListener("click", function (){
 							// Change this to the video source for the lecture
-							video.innerHTML = "<source src='{{ resource.resourse_length }}' type='video/mp4'>"
+							video.innerHTML = '<iframe src="{{ resource.resourse_link }}" frameborder="0" id="course-img" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>'
 						});
 					</script>
 					{% endfor %}

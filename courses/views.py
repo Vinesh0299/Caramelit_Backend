@@ -50,6 +50,7 @@ def course_resource(request):
                 resourse_length=request.POST.get(resource+'_length'),
             )
             Course_res.save()
+        return redirect('/course/list_course')
     return render(request, 'courses/course_resource.html', {'resources' : resources })
 
 def edit_course(request, courseID):
@@ -78,7 +79,7 @@ def delete_course(request, courseID):
 def uicourses(request):
     if request.COOKIES.get('username') == None or request.COOKIES.get('username') == 'None':
         return redirect('/user/login')
-    uicourse = Course.objects.filter(course_id=2)
+    uicourse = Course.objects.filter(course_id=3)
     uicourse_resource = Course_resource.objects.filter(course=uicourse[0])
     similar = Course.objects.filter(category_name=uicourse[0].category_name)
     return render(request, 'courses/course.html', {'course' : uicourse[0], 'course_resource' : uicourse_resource, 'similar' : similar, 'lectures' : len(uicourse_resource)})
